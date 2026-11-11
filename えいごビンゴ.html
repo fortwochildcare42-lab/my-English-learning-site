@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>えいごビンゴ</title>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#e6f2ff;--ink:#1d2a63;--pan:#fff;--mut:#5d6a99;--pri:#ff4f8b;--sun:#ffc83d;--grn:#14b8a6;--ln:#c9d9f5;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10173a;--ink:#eef2ff;--pan:#1b2556;--mut:#a8b4e6;--ln:#33407f;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#10173a;--ink:#eef2ff;--pan:#1b2556;--mut:#a8b4e6;--ln:#33407f;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Sans",sans-serif;font-weight:500;min-height:100vh}
+.wrap{max-width:980px;margin:0 auto;padding:14px 16px 40px}
+h1{margin:0;font-size:1.6rem;font-weight:900}
+.top{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between}
+.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:12px 0}
+select,textarea,button{font:inherit;color:inherit}
+select{padding:10px 12px;border-radius:12px;border:2px solid var(--ln);background:var(--pan);font-weight:700}
+textarea{width:100%;min-height:90px;padding:10px;border-radius:12px;border:2px solid var(--ln);background:var(--pan)}
+.tabs{display:flex;gap:8px;margin:4px 0 14px}
+.tab{flex:1;padding:14px;border-radius:16px;border:2px solid var(--ln);background:var(--pan);font-weight:900;font-size:1.05rem;cursor:pointer}
+.tab[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn{padding:14px 22px;border:0;border-radius:16px;font-weight:900;font-size:1.1rem;cursor:pointer;background:var(--pan);border:2px solid var(--ln)}
+.go{background:var(--pri);color:#fff;border-color:var(--pri);font-size:1.5rem;padding:18px 34px;box-shadow:0 6px 0 rgba(0,0,0,.2)}
+.go:active{transform:translateY(4px);box-shadow:0 2px 0 rgba(0,0,0,.2)}
+.sun{background:var(--sun);border-color:var(--sun);color:#1d2a63}
+.chk{display:flex;gap:6px;align-items:center;font-weight:700}
+.chk input{width:22px;height:22px}
+.hide{display:none!important}
+.stage{display:grid;place-items:center;padding:10px 0 4px}
+.ball{width:min(78vw,420px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 32% 28%,#fff 0,#fff 45%,#e5ecff 100%);color:#1d2a63;display:grid;place-items:center;align-content:center;box-shadow:0 0 0 14px var(--sun),0 0 0 18px var(--ink),0 18px 30px rgba(0,0,0,.25);text-align:center}
+.ball #emoji{font-size:min(30vw,170px);line-height:1.05}
+.ball #word{font-size:min(11vw,64px);font-weight:900;margin-top:4px;word-break:break-word;padding:0 14px}
+.nw #word{visibility:hidden}.ne #emoji{visibility:hidden}
+.pop{animation:pop .35s ease-out}
+@keyframes pop{0%{transform:scale(.8)}70%{transform:scale(1.06)}100%{transform:scale(1)}}
+.row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center;margin:22px 0 10px}
+.cnt{text-align:center;color:var(--mut);font-weight:700}
+.hist{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{background:var(--pan);border:2px solid var(--ln);border-radius:999px;padding:6px 12px;font-weight:700}
+.panel{background:var(--pan);border:2px solid var(--ln);border-radius:20px;padding:14px;margin-bottom:14px}
+.sheet{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:20px;justify-items:center}
+.card{container-type:inline-size;width:100%;max-width:170mm;background:#fff;color:#111;border:3px solid #1d2a63;border-radius:14px;padding:10px;break-inside:avoid}
+.ch{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:6px}
+.ch b{font-size:9cqw;letter-spacing:.12em;color:#ff4f8b;font-weight:900;line-height:1}
+.ch span{font-size:3.8cqw;font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(var(--n),1fr);gap:0;border:2px solid #1d2a63}
+.cell{aspect-ratio:1.25;border:1.5px solid #1d2a63;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding:2px}
+.cell i{font-style:normal;font-size:calc(24cqw/var(--n));line-height:1.1}
+.cell em{font-style:normal;font-weight:900;font-size:calc(14cqw/var(--n));line-height:1.15}
+.ov{position:fixed;inset:0;background:rgba(16,23,58,.88);display:grid;place-items:center;z-index:9;overflow:hidden;cursor:pointer}
+.ov h2{font-size:min(20vw,140px);margin:0;color:var(--sun);font-weight:900;text-shadow:0 6px 0 var(--pri);animation:pop .5s ease-out}
+.fall{position:absolute;top:-60px;font-size:40px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(115vh) rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.pop,.ov h2{animation:none}}
+@page{size:A4;margin:10mm}
+@media print{
+ :root{padding:0!important}
+ body{background:#fff}
+ .wrap{padding:0;max-width:none}
+ .top,.bar,.tabs,#caller,.noprint{display:none!important}
+ #cards{display:block!important}
+ .sheet{display:block}
+ .card{width:170mm;margin:0 auto 8mm;border-radius:6mm;box-shadow:none}
+ .cell{aspect-ratio:auto;height:calc(112mm/var(--n))}
+}
+</style></head>
+<body><div class="wrap">
+<div class="top"><h1>🎯 えいごビンゴ</h1></div>
+<div class="bar">
+ <label for="theme"><b>テーマ</b></label>
+ <select id="theme">
+  <option value="animals">🐾 どうぶつ</option>
+  <option value="fruits">🍎 くだもの・やさい</option>
+  <option value="food">🍕 たべもの</option>
+  <option value="vehicles">🚗 のりもの</option>
+  <option value="school">🎒 がっこう</option>
+  <option value="custom">✏️ オリジナル</option>
+ </select>
+</div>
+<div id="customBox" class="panel hide">
+ <div style="margin-bottom:6px;font-weight:700">1行に1つ。「🍎 apple」のように絵文字+英語(絵文字なしでもOK)</div>
+ <textarea id="custom">🍎 apple
+🍌 banana
+🐶 dog
+🐱 cat
+🚗 car
+🚌 bus
+⚽ soccer
+🏀 basketball
+🎹 piano
+📘 book
+✏️ pencil
+🎒 bag</textarea>
+</div>
+<div class="tabs">
+ <button class="tab" id="t1" aria-pressed="true">🎤 ことばを出す(iPad)</button>
+ <button class="tab" id="t2" aria-pressed="false">🖨️ ビンゴ用紙を作る</button>
+</div>
+
+<section id="caller">
+ <div class="stage"><div class="ball" id="stage"><div id="emoji">🎯</div><div id="word">Let’s play!</div></div></div>
+ <div class="cnt" id="cnt"></div>
+ <div class="row">
+  <button class="btn go" id="next">つぎのことば ▶</button>
+  <button class="btn" id="again">🔊 もういちど</button>
+  <button class="btn sun" id="bingo">🎉 BINGO!</button>
+ </div>
+ <div class="row" style="margin-top:0">
+  <label class="chk"><input type="checkbox" id="showE" checked>絵を見せる</label>
+  <label class="chk"><input type="checkbox" id="showW" checked>ことばを見せる</label>
+  <label class="chk"><input type="checkbox" id="sound" checked>音声で読む</label>
+  <button class="btn" id="reset" style="padding:8px 14px;font-size:.95rem">🔄 さいしょから</button>
+ </div>
+ <div class="hist" id="hist"></div>
+</section>
+
+<section id="cards" class="hide">
+ <div class="panel noprint">
+  <div class="bar" style="margin:0">
+   <label class="chk">マス <select id="size"><option value="3">3×3</option><option value="4">4×4</option></select></label>
+   <label class="chk">まい数 <select id="count"><option>1</option><option selected>2</option><option>4</option><option>6</option><option>8</option></select></label>
+   <label class="chk"><input type="checkbox" id="emo" checked>絵もいれる</label>
+   <button class="btn" id="make">🔀 作りなおす</button>
+   <button class="btn go" id="print" style="font-size:1.1rem;padding:12px 22px">🖨️ 印刷</button>
+  </div>
+  <div id="msg" style="margin-top:8px;color:var(--mut);font-weight:700"></div>
+ </div>
+ <div class="sheet" id="sheet"></div>
+</section>
+
+<div class="ov hide" id="ov"><h2>BINGO!</h2></div>
+</div>
+<script>
+const T={
+animals:"🐶 dog,🐱 cat,🐰 rabbit,🐻 bear,🐘 elephant,🦁 lion,🐵 monkey,🐷 pig,🐮 cow,🐸 frog,🐧 penguin,🐟 fish,🐦 bird,🐴 horse,🐼 panda,🐯 tiger,🦒 giraffe,🐢 turtle,🐭 mouse,🦆 duck",
+fruits:"🍎 apple,🍌 banana,🍇 grapes,🍓 strawberry,🍊 orange,🍑 peach,🍉 watermelon,🍋 lemon,🍒 cherry,🍍 pineapple,🥝 kiwi,🍐 pear,🥭 mango,🍈 melon,🥑 avocado,🍅 tomato,🥕 carrot,🌽 corn,🥔 potato,🥦 broccoli",
+food:"🍕 pizza,🍔 hamburger,🍙 rice ball,🍞 bread,🥚 egg,🧀 cheese,🍦 ice cream,🍰 cake,🍪 cookie,🍩 donut,🍜 noodles,🥛 milk,🍟 french fries,🌭 hot dog,🍫 chocolate,🍿 popcorn,🍣 sushi,🥞 pancake,🍬 candy,🍵 tea",
+vehicles:"🚗 car,🚌 bus,🚕 taxi,🚓 police car,🚒 fire truck,🚑 ambulance,🚲 bicycle,🚂 train,✈️ airplane,🚢 ship,🚁 helicopter,🚀 rocket,🛵 scooter,🚜 tractor,🏍️ motorcycle,🚚 truck,⛵ sailboat,🚄 bullet train,🛶 canoe,🚧 construction",
+school:"✏️ pencil,📕 book,🎒 bag,✂️ scissors,📏 ruler,🖍️ crayon,⏰ clock,🪑 chair,🔔 bell,🖊️ pen,📓 notebook,🎨 paint,🧽 eraser,🎹 piano,⚽ ball,🏫 school,🌈 rainbow,🎵 music,💡 light,🚪 door"
+};
+const $=s=>document.querySelector(s);
+const parse=l=>{l=l.trim();if(!l)return null;const m=l.match(/^(\S+)\s+(.+)$/);return m&&!/[A-Za-z]/.test(m[1])?{e:m[1],w:m[2]}:{e:"",w:l}};
+const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+const esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+function pool(){const v=$("#theme").value;const src=v==="custom"?$("#custom").value.split("\n"):T[v].split(",");return src.map(parse).filter(Boolean)}
+
+/* ---- Caller ---- */
+let deck=[],called=[],busy=false,last=null;
+const FEM=["samantha","ava","allison","susan","karen","tessa","moira","serena","fiona","victoria","kate","zira","aria","jenny","emma","female"];
+const MALE=["alex","daniel","fred","tom","aaron","gordon","oliver","rishi","arthur","albert","ralph","junior","david","mark","guy","male"];
+let vo=null;
+function pickVoice(){try{const v=speechSynthesis.getVoices().filter(x=>/^en/i.test(x.lang));const ok=x=>!MALE.some(m=>x.name.toLowerCase().includes(m)||x.name.toLowerCase().includes("google uk english male"));const f=v.filter(x=>ok(x)&&FEM.some(n=>x.name.toLowerCase().includes(n)));vo=f.find(x=>/en-US/i.test(x.lang))||f[0]||v.find(x=>/en-US/i.test(x.lang)&&ok(x))||v.find(ok)||null}catch(e){}}
+try{speechSynthesis.onvoiceschanged=pickVoice}catch(e){}
+pickVoice();
+function speak(t){if(!$("#sound").checked)return;try{if(!vo)pickVoice();speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="en-US";if(vo)u.voice=vo;u.rate=.8;u.pitch=1.2;speechSynthesis.speak(u)}catch(e){}}
+function view(c){$("#emoji").textContent=c.e||"🎯";$("#word").textContent=c.w;const b=$("#stage");b.classList.remove("pop");void b.offsetWidth;b.classList.add("pop")}
+function stats(){$("#cnt").textContent=called.length+" / "+(called.length+deck.length)+" ことば";$("#hist").innerHTML=called.slice().reverse().map(c=>'<span class="chip">'+c.e+" "+esc(c.w)+"</span>").join("")}
+function reset(){deck=shuffle(pool());called=[];last=null;busy=false;$("#emoji").textContent="🎯";$("#word").textContent="Let’s play!";stats()}
+function next(){
+ if(busy)return;
+ try{speechSynthesis.speak(new SpeechSynthesisUtterance(""))}catch(e){}
+ if(!deck.length){$("#emoji").textContent="🏁";$("#word").textContent="Finish!";return}
+ busy=true;const p=pool();let n=0;
+ const iv=setInterval(()=>{const r=p[Math.random()*p.length|0];$("#emoji").textContent=r.e||"❓";$("#word").textContent="…";
+  if(++n>9){clearInterval(iv);last=deck.pop();called.push(last);view(last);stats();busy=false;speak(last.w)}},70)}
+$("#next").onclick=next;
+$("#again").onclick=()=>{if(last)speak(last.w)};
+$("#reset").onclick=reset;
+$("#showE").onchange=e=>$("#stage").classList.toggle("ne",!e.target.checked);
+$("#showW").onchange=e=>$("#stage").classList.toggle("nw",!e.target.checked);
+$("#bingo").onclick=()=>{const o=$("#ov");o.classList.remove("hide");
+ o.querySelectorAll(".fall").forEach(x=>x.remove());
+ const em=["🎉","⭐","🎊","✨","🌟","🎈"];
+ for(let i=0;i<36;i++){const s=document.createElement("span");s.className="fall";s.textContent=em[i%em.length];s.style.left=Math.random()*100+"%";s.style.animationDuration=2+Math.random()*2.5+"s";s.style.animationDelay=Math.random()*1.2+"s";o.appendChild(s)}
+ speak("Bingo! Great job!")};
+$("#ov").onclick=()=>$("#ov").classList.add("hide");
+
+/* ---- Cards ---- */
+function make(){
+ const n=+$("#size").value,k=n*n,cnt=+$("#count").value,p=pool(),emo=$("#emo").checked;
+ if(p.length<k){$("#sheet").innerHTML="";$("#msg").textContent="ことばが足りません。"+k+"個以上にしてください(いま"+p.length+"個)。";return}
+ $("#msg").textContent=p.length<k+3?"ことばが少ないので、どのカードも似た並びになります。":"カードごとに並びがちがいます。印刷すると1ページに2枚(A4)です。";
+ let h="";
+ for(let i=0;i<cnt;i++){
+  h+='<div class="card"><div class="ch"><b>BINGO</b><span>Name: ____________</span></div><div class="grid" style="--n:'+n+'">'+
+   shuffle(p).slice(0,k).map(c=>'<div class="cell">'+(emo&&c.e?"<i>"+c.e+"</i>":"")+"<em>"+esc(c.w)+"</em></div>").join("")+"</div></div>"}
+ $("#sheet").innerHTML=h}
+["size","count","emo"].forEach(i=>$("#"+i).onchange=make);
+$("#make").onclick=make;
+$("#print").onclick=()=>window.print();
+
+/* ---- Common ---- */
+function tab(n){$("#caller").classList.toggle("hide",n!==1);$("#cards").classList.toggle("hide",n!==2);$("#t1").setAttribute("aria-pressed",n===1);$("#t2").setAttribute("aria-pressed",n===2)}
+$("#t1").onclick=()=>tab(1);$("#t2").onclick=()=>tab(2);
+function theme(){$("#customBox").classList.toggle("hide",$("#theme").value!=="custom");reset();make()}
+$("#theme").onchange=theme;
+$("#custom").oninput=()=>{reset();make()};
+theme();
+</script></body></html>
