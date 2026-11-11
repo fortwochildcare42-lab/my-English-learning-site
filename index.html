@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>えいご パワーアップ・ドリル</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap">
+<style>
+:root{--bg:#e8f3ff;--card:#fff;--ink:#1d2540;--sub:#566083;--line:#c3d8f2;--ok:#127a53;--ng:#c92a30;--ac:#3b5bdb;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141a2e;--card:#1f2742;--ink:#f1f4ff;--sub:#a7b1d3;--line:#36406a;--ok:#3ccf91;--ng:#ff8085;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#141a2e;--card:#1f2742;--ink:#f1f4ff;--sub:#a7b1d3;--line:#36406a;--ok:#3ccf91;--ng:#ff8085;color-scheme:dark}
+*{box-sizing:border-box}
+html{font-size:20px;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);background-image:radial-gradient(var(--line) 1.5px,transparent 1.5px);background-size:24px 24px;color:var(--ink);font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic",system-ui,sans-serif;font-size:1rem;line-height:1.6}
+.wrap{max-width:900px;margin:0 auto;padding:14px}
+header{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+h1{font-size:clamp(1.2rem,4vw,1.8rem);margin:0;font-weight:900}
+.tools{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.tools button,.star{font:inherit;font-size:.75rem;font-weight:700;background:var(--card);color:var(--ink);border:2px solid var(--line);border-radius:99px;padding:2px 12px;cursor:pointer}
+.tools button.on{background:var(--ink);color:var(--card);border-color:var(--ink)}
+.star{font-size:.9rem;cursor:default}
+nav{display:flex;gap:8px;overflow-x:auto;padding:12px 2px 8px}
+.tab{flex:none;border:2px solid var(--line);background:var(--card);color:var(--ink);border-radius:16px;padding:6px 12px;font:inherit;font-weight:700;font-size:.8rem;cursor:pointer;display:flex;gap:6px;align-items:center}
+.tab.on{background:var(--c);border-color:var(--c);color:#fff}
+.top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;margin-top:8px}
+.top h2{margin:0;font-size:1.35rem;color:color-mix(in srgb,var(--ac) 78%,var(--ink))}
+.top p{margin:0;color:var(--sub);font-size:.8rem;flex-basis:100%}
+.cnt{font-weight:900;color:var(--sub)}
+.dots{display:flex;gap:5px;margin:10px 0}
+.dots i{flex:1;height:8px;border-radius:9px;background:var(--line)}
+.dots .d{background:var(--ac)}.dots .c{background:var(--ac);opacity:.45}
+.card{background:var(--card);border:3px solid var(--ink);border-radius:24px;padding:22px;display:flex;flex-direction:column;gap:16px;box-shadow:7px 7px 0 var(--ac)}
+.lab{font-weight:700;color:var(--sub);font-size:.85rem}
+.en{font-size:clamp(1.9rem,6vw,3.2rem);font-weight:900;line-height:1.35}
+.en u{text-decoration-color:var(--ac);text-decoration-thickness:6px;text-underline-offset:7px}
+.jp{font-size:clamp(1.4rem,4vw,2.1rem);font-weight:700}
+.tag{align-self:flex-start;background:var(--ac);color:#fff;border-radius:99px;padding:2px 16px;font-weight:700}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;color:var(--sub)}
+.flow b{background:var(--bg);border:2px solid var(--line);border-radius:10px;padding:2px 10px;font-size:.85rem;color:var(--ink)}
+.flow b.done{border-color:var(--ok)}.flow b.now{background:var(--ac);border-color:var(--ac);color:#fff}
+.ans{background:color-mix(in srgb,var(--ok) 14%,var(--card));border:3px solid var(--ok);border-radius:16px;padding:12px 16px;font-size:clamp(1.3rem,3.8vw,2rem);font-weight:900;display:flex;flex-direction:column;gap:4px}
+.ans span{font-size:.75rem;color:var(--ok)}
+.ans p{margin:0}.ans small{display:inline-block;min-width:4.5em;font-size:.6em;color:var(--ok)}
+.pt{background:color-mix(in srgb,#f5b301 20%,var(--card));border-radius:14px;padding:8px 14px;font-weight:700;font-size:.85rem}
+.btn{font:inherit;font-weight:900;font-size:1.05rem;border:0;border-radius:16px;padding:14px 22px;background:var(--ac);color:#fff;cursor:pointer;box-shadow:0 4px 0 rgba(0,0,0,.28)}
+.btn:active{transform:translateY(3px);box-shadow:none}
+.btn.ok{background:var(--ok);color:#fff}
+.btn.ghost{background:var(--card);color:var(--ink);border:2px solid var(--line);box-shadow:none}
+.btn.ghost.sel{border-color:var(--ac);background:color-mix(in srgb,var(--ac) 18%,var(--card))}
+.btn.sm{font-size:.8rem;padding:8px 14px}
+.row{display:flex;gap:10px;flex-wrap:wrap}.row .btn{flex:1}
+.say{font-size:1.1rem;background:var(--bg);border:2px solid var(--line);border-radius:12px;padding:2px 10px;cursor:pointer;vertical-align:middle}
+.chk{border:2px dashed var(--line);border-radius:16px;padding:10px 12px;display:flex;flex-direction:column;gap:8px}
+.chk label{font-size:.75rem;color:var(--sub);font-weight:700}
+.row2{display:flex;gap:8px;align-items:stretch}
+textarea{flex:1;font:inherit;font-size:.9rem;border:2px solid var(--line);border-radius:12px;padding:6px 10px;background:var(--bg);color:var(--ink);resize:vertical;min-height:44px}
+.tk{display:inline-block;margin-right:10px;font-weight:700}.good{color:var(--ok)}.bad{color:var(--ng)}
+.msg{font-weight:700;font-size:.9rem}
+.df{font-weight:700}mark{background:color-mix(in srgb,var(--ng) 28%,transparent);color:inherit;border-radius:6px;padding:0 4px}
+.slot{min-height:76px;border:3px dashed var(--line);border-radius:16px;padding:10px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ph{color:var(--sub)}
+.bank{display:flex;flex-wrap:wrap;gap:10px}
+.chip{font:inherit;font-weight:900;font-size:clamp(1.3rem,4vw,1.9rem);background:var(--bg);color:var(--ink);border:2px solid var(--ac);border-radius:14px;padding:6px 16px;cursor:pointer;box-shadow:0 3px 0 var(--ac)}
+.chip.in{background:var(--ac);color:#fff}
+.kw{display:flex;flex-wrap:wrap;gap:10px}
+.kw b{font-size:clamp(1.6rem,5vw,2.6rem);background:var(--bg);border:3px solid var(--ac);border-radius:16px;padding:4px 18px}
+.cd{align-self:center;width:6.5rem;height:6.5rem;border-radius:50%;background:var(--ac);color:#fff;font-size:4rem;font-weight:900;display:grid;place-items:center;line-height:1}
+.nav{display:flex;justify-content:space-between;margin-top:14px;gap:10px}
+.end{text-align:center;align-items:center}.big{font-size:3.6rem;line-height:1;letter-spacing:.1em}
+.end h3{margin:0}.sc{font-size:1.5rem;font-weight:900;margin:0}
+.end .btn{width:100%;max-width:340px}
+button:focus-visible,textarea:focus-visible{outline:4px solid var(--ink);outline-offset:2px}
+footer{text-align:center;color:var(--sub);font-size:.7rem;margin:18px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>🚀 えいご パワーアップ・ドリル</h1>
+<div class="tools"><button id="bR" onclick="tgR()">🔀 ランダム</button><button id="bT" class="on" onclick="tgT()">🧑‍🏫 先生ツール</button><button onclick="fz(-2)" aria-label="文字を小さく">A−</button><button onclick="fz(2)" aria-label="文字を大きく">A＋</button><span class="star">⭐ <span id="total">0</span></span></div>
+</header>
+<nav id="tabs"></nav>
+<main id="stage"></main>
+<footer>キー操作：Enter＝こたえ・できた　←＝もどる　→＝つぎへ</footer>
+</div>
+<script>
+const M=[
+{id:1,ic:"🔍",nm:"まちがい探し",ac:"#c9470a",lab:"💬 まちがいを見つけて、正しい文をチャットに打とう → 🗣 声に出して読もう",ds:"be動詞と一般動詞のまぜこぜに注意。",it:[
+{q:"He don’t play soccer.",a:"He doesn’t play soccer.",h:"主語が he / she / it → doesn’t ＋ 動詞のもとの形"},
+{q:"Does she can swim?",a:"Can she swim?",h:"can の疑問文は can を前に出す。does はいらない"},
+{q:"I am like apples.",a:"I like apples.",h:"am（be動詞）と like（一般動詞）はいっしょに使えない"},
+{q:"Where you live?",a:"Where do you live?",h:"疑問詞のあとにも do / does が必要"},
+{q:"She is play the piano.",a:"She plays the piano.",h:"一般動詞の文に is はいらない。she なので plays"},
+{q:"Do he have a dog?",a:"Does he have a dog?",h:"he / she / it の疑問文は Does"},
+{q:"I didn’t went to school.",a:"I didn’t go to school.",h:"didn’t のあとは 動詞のもとの形"},
+{q:"What time you get up?",a:"What time do you get up?",h:"What time のあとにも do が必要"},
+{q:"They aren’t like fish.",a:"They don’t like fish.",h:"一般動詞(like)の否定文は don’t"},
+{q:"He can plays tennis.",a:"He can play tennis.",h:"can のあとは 動詞のもとの形（s なし）"}]},
+{id:2,ic:"🔗",nm:"変身チェーン",ac:"#7048e8",lab:"💬 光っている「へんしん」の文を チャットに打とう",ds:"1つずつ答えが出るよ。否定 → 疑問 → 過去 → 疑問詞。",it:[
+{q:"She plays tennis.",s:[["否定文","She doesn’t play tennis."],["疑問文","Does she play tennis?"],["過去形","She played tennis."],["Where","Where does she play tennis?"]]},
+{q:"He is a teacher.",s:[["否定文","He isn’t a teacher."],["疑問文","Is he a teacher?"],["過去形","He was a teacher."],["What","What is he?"]]},
+{q:"They can swim.",s:[["否定文","They can’t swim."],["疑問文","Can they swim?"],["過去形","They could swim."],["Where","Where can they swim?"]]},
+{q:"I like dogs.",s:[["否定文","I don’t like dogs."],["疑問文","Do you like dogs?"],["過去形","I liked dogs."],["What","What do you like?"]]},
+{q:"He wants a new bike.",s:[["否定文","He doesn’t want a new bike."],["疑問文","Does he want a new bike?"],["過去形","He wanted a new bike."],["What","What does he want?"]]}]},
+{id:3,ic:"🎯",nm:"答えから質問",ac:"#0b7fc0",lab:"💬 下線の部分をたずねる文を チャットに打とう → 🗣 読もう",ds:"What / Where / When / Who / Why / How …",it:[
+{q:"He plays <u>soccer</u> in the park.",a:"What does he play in the park?",alt:["What does he play?"],h:"もの → What ＋ does ＋ 主語 ＋ 動詞"},
+{q:"She gets up <u>at six</u>.",a:"What time does she get up?",alt:["When does she get up?"],h:"時刻 → What time"},
+{q:"I live <u>in Yokkaichi</u>.",a:"Where do you live?",h:"場所 → Where（I は you に変える）"},
+{q:"<u>Ken</u> is my teacher.",a:"Who is your teacher?",h:"人 → Who（my は your に）"},
+{q:"They went to the zoo <u>yesterday</u>.",a:"When did they go to the zoo?",h:"過去 → did ＋ 動詞のもとの形"},
+{q:"I like <u>blue</u>.",a:"What color do you like?",alt:["What do you like?"],h:"色 → What color"},
+{q:"She is <u>ten</u> years old.",a:"How old is she?",h:"年れい → How old"},
+{q:"He walks to school <u>because it is fun</u>.",a:"Why does he walk to school?",h:"理由 → Why"},
+{q:"She has <u>two</u> cats.",a:"How many cats does she have?",h:"数 → How many ＋ 名詞（複数）"}]},
+{id:4,ic:"🧩",nm:"ひっかけ並べ替え",ac:"#157a4e",lab:"🧩 語をタップして文をつくろう（いらない語が1つ！）",ds:"できたら 🗣 声に出して読もう。",it:[
+{w:["does","do","you","where","live"],a:"Where do you live?",x:"does",h:"you が主語 → do"},
+{w:["she","can","does","swim","fast"],a:"Can she swim fast?",x:"does",h:"can があるときは does はいらない"},
+{w:["I","didn’t","don’t","eat","breakfast","today"],a:"I didn’t eat breakfast today.",x:"don’t",h:"過去の否定文"},
+{w:["what","does","he","like","is"],a:"What does he like?",x:"is",h:"like は一般動詞"},
+{w:["she","doesn’t","isn’t","like","cats"],a:"She doesn’t like cats.",x:"isn’t",h:"like の否定文"},
+{w:["can","you","do","play","the","piano"],a:"Can you play the piano?",x:"do",h:"can の疑問文"},
+{w:["is","she","a","nurse","does"],a:"Is she a nurse?",x:"does",h:"be動詞の疑問文は be動詞が前"},
+{w:["where","did","you","go","yesterday","went"],a:"Where did you go yesterday?",x:"went",h:"did のあとは もとの形"}]},
+{id:5,ic:"⏪",nm:"can → could",ac:"#c2255c",lab:"💬 ( )の時の文にかえて チャットに打とう",ds:"can の過去形は could。can’t は couldn’t。",it:[
+{q:"I can swim.",t:"last year",a:"I could swim last year.",h:"can → could"},
+{q:"She can’t run fast.",t:"when she was five",a:"She couldn’t run fast when she was five.",alt:["She couldn’t run fast when she was 5."],h:"can’t → couldn’t"},
+{q:"Can you read English?",t:"two years ago",a:"Could you read English two years ago?",h:"疑問文は Could ではじめる"},
+{q:"He can play the piano.",t:"last year",a:"He could play the piano last year.",h:"could のあとも もとの形"},
+{q:"We can’t see the stars.",t:"last night",a:"We couldn’t see the stars last night.",h:"can’t → couldn’t"},
+{q:"Can they come?",t:"yesterday",a:"Could they come yesterday?",h:"Can → Could"},
+{q:"Can she speak English?",t:"three years ago",a:"Could she speak English three years ago?",h:"Can → Could"}]},
+{id:6,ic:"🎬",nm:"ミッション英作文",ac:"#a86400",lab:"💬 条件をぜんぶ使って チャットに打とう → 🗣 読もう",ds:"答えはいろいろOK。使うべき語は 先生ツールで自動チェック。",it:[
+{q:"don’t と because を使って、きらいなものを説明しよう",a:"I don’t like natto because it smells strange.",req:["don’t","because"]},
+{q:"Can と Where を使った質問を2つ作ろう",a:"Can you swim? / Where can I buy a ball?",req:["can","where"]},
+{q:"didn’t を使って、昨日しなかったことを2つ言おう",a:"I didn’t watch TV yesterday. I didn’t play games.",req:["didn’t"]},
+{q:"be動詞の疑問文と What の質問を1つずつ作ろう",a:"Is this your bag? / What is your favorite food?",req:["is","what"]},
+{q:"Does の質問を作って、Yes / No で答えよう",a:"Does your mother cook? — Yes, she does.",req:["does"]},
+{q:"could を使って、小さいころできたことを言おう",a:"I could ride a bike when I was six.",req:["could"]}]},
+{id:7,ic:"⚡",nm:"3秒即答",ac:"#3b5bdb",lab:"⚡ キーワードを見て 🗣 声で答える → 💬 チャットにも打とう",ds:"no＝否定　?＝疑問文　3秒か5秒を えらべるよ。",it:[
+{k:["She","swim","yesterday","no"],a:"She didn’t swim yesterday."},
+{k:["he","play","soccer","?"],a:"Does he play soccer?"},
+{k:["you","where","live","?"],a:"Where do you live?"},
+{k:["I","can","cook","no"],a:"I can’t cook."},
+{k:["they","go","school","yesterday"],a:"They went to school yesterday."},
+{k:["what","you","want","?"],a:"What do you want?"},
+{k:["Ken","teacher","no"],a:"Ken isn’t a teacher."},
+{k:["she","can","ride","bike","last year"],a:"She could ride a bike last year."}]},
+{id:8,ic:"🗨️",nm:"チャット会話",ac:"#0f766e",lab:"💬 先生の質問に チャットで答えよう → 🗣 声に出して読もう",ds:"じぶんのことを 英語で答える練習。",it:[
+{q:"Where do you live?",h:"答えの型：I live in ___.",a:"I live in Yokkaichi.",req:["live"]},
+{q:"What time do you get up?",h:"答えの型：I get up at ___.",a:"I get up at six thirty.",req:["get","up"]},
+{q:"Can you swim fast?",h:"答えの型：Yes, I can. / No, I can’t.",a:"No, I can’t. But I can swim.",req:["can"]},
+{q:"What did you eat for breakfast?",h:"答えの型：I ate ___.",a:"I ate rice and miso soup.",req:["ate"]},
+{q:"Do you like dogs?",h:"答えの型：Yes, I do. / No, I don’t.",a:"Yes, I do. I like small dogs.",req:["do"]},
+{q:"Is your mother a good cook?",h:"答えの型：Yes, she is. / No, she isn’t.",a:"Yes, she is. She makes good curry.",req:["is"]},
+{q:"Why do you study English?",h:"答えの型：Because ___.",a:"Because I want to travel.",req:["because"]},
+{q:"What could you do when you were five?",h:"答えの型：I could ___.",a:"I could ride a bike.",req:["could"]}]}
+];
+const $=s=>document.querySelector(s);
+const sp=s=>s.replace(/<[^>]+>/g,"");
+const esc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const sh=a=>{a=[...a];for(let k=a.length-1;k>0;k--){const j=Math.random()*(k+1)|0;[a[k],a[j]]=[a[j],a[k]]}return a};
+const ex=s=>s.toLowerCase().replace(/[’']/g,"'").replace(/cannot|can't/g,"can not").replace(/won't/g,"will not").replace(/(\w+)n't/g,"$1 not").replace(/[.?!,]/g,"").replace(/\s+/g," ").trim();
+let m=0,i=0,rev=false,ph=0,hint=false,rs=0,pick=[],ord=[],msg="",tm=null,ctxt="",fb="",cd=0,sec=3,rnd=false,tool=true,fs=20;
+const R=M.map(()=>[]),Q=M.map(()=>[]);
+const cur=()=>M[m].it[Q[m][i]];
+function mkQ(k,only){let a=only||[...Array(M[k].it.length).keys()];if(rnd)a=sh(a);Q[k]=a;R[k]=[]}
+function reset(){clearTimeout(tm);rev=false;ph=0;hint=false;rs=0;pick=[];msg="";ctxt="";fb="";const it=cur();if(it&&it.w)ord=sh(it.w.map((_,k)=>k))}
+function go(k,only){m=k;i=0;mkQ(k,only);reset();render();window.scrollTo(0,0)}
+function again(){go(m,Q[m].filter((_,p)=>R[m][p]===0))}
+function nx(p){R[m][i]=p;i++;reset();render();window.scrollTo(0,0)}
+function pv(){if(i>0){i--;reset();render()}}
+function show(){rev=true;render()}
+function pk(k){pick.push(k);msg="";render()}
+function un(k){pick=pick.filter(x=>x!=k);msg="";render()}
+function clr(){pick=[];msg="";render()}
+function tgR(){rnd=!rnd;go(m)}
+function tgT(){tool=!tool;render()}
+function fz(d){fs=Math.min(30,Math.max(16,fs+d));document.documentElement.style.fontSize=fs+"px"}
+function chk(){const it=cur();
+ if(ex(pick.map(k=>it.w[k]).join(" "))==ex(it.a)){rev=true;msg="🎉 せいかい！ いらない語は「"+it.x+"」でした"}
+ else msg=pick.length<it.w.length-1?"まだ語がたりないよ。いらない語は1つだけ！":"おしい！ もういちど考えてみよう";
+ render()}
+function go3(){ph=1;cd=sec;render();tm=setTimeout(tick,1000)}
+function tick(){cd--;if(cd<=0){ph=2;render()}else{$("#cd").textContent=cd;tm=setTimeout(tick,1000)}}
+function check(){const D=M[m],it=cur(),v=ctxt.trim();
+ if(!v){fb=""}
+ else if(it.req){const e=ex(v);fb=it.req.map(w=>{const ok=new RegExp("(^| )"+ex(w)+"( |$)").test(e);return `<span class="tk ${ok?"good":"bad"}">${ok?"✔":"✖"} ${w}</span>`}).join("")}
+ else{const A=[it.a,...(it.alt||[])],c=v.replace(/'/g,"’");
+  if(A.includes(c))fb=`<div class="msg good">⭕ かんぺき！</div>`;
+  else if(A.some(a=>ex(a)==ex(v)))fb=`<div class="msg good">⭕ ほぼせいかい！ 大文字・ピリオド・？を見なおそう</div>`;
+  else{const set=new Set(A.flatMap(a=>ex(a).split(" ")));
+   fb=`<div class="msg bad">もう少し！ 赤い所を見なおそう</div><div class="df">${v.split(/\s+/).map(w=>!ex(w)||ex(w).split(" ").every(x=>set.has(x))?esc(w):`<mark>${esc(w)}</mark>`).join(" ")}</div>`}}
+ $("#fb").innerHTML=fb}
+function say(t){if(!("speechSynthesis" in window))return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=.85;const v=speechSynthesis.getVoices().filter(x=>x.lang.startsWith("en"));const f=v.find(x=>/samantha|karen|zira|aria|jenny|google us/i.test(x.name))||v[0];if(f)u.voice=f;speechSynthesis.speak(u)}
+if("speechSynthesis" in window)speechSynthesis.onvoiceschanged=()=>{};
+document.addEventListener("click",e=>{const b=e.target.closest("[data-say]");if(b)say(b.dataset.say)});
+document.addEventListener("keydown",e=>{if(e.target.tagName=="TEXTAREA")return;
+ if(e.key=="Enter"||e.key==" "){const b=$("#pri");if(b){e.preventDefault();b.click()}}
+ else if(e.key=="ArrowLeft")pv();else if(e.key=="ArrowRight"&&cur())nx(0)});
+const sayB=t=>`<button class="say" data-say="${sp(t)}" aria-label="音声を聞く">🔊</button>`;
+const judge=()=>`<div class="row"><button id="pri" class="btn ok" onclick="nx(1)">⭕ できた！</button><button class="btn ghost" onclick="nx(0)">🔁 もういちど練習</button></div>`;
+const ptH=it=>it.h?`<div class="pt">💡 ${it.h}</div>`:"";
+const hintB=it=>it.h&&!hint&&!rev?`<button class="btn ghost sm" onclick="hint=true;render()">💡 ヒント</button>`:"";
+function chkH(){return tool?`<div class="chk"><label for="ct">🧑‍🏫 生徒のチャットを ここに貼りつけ</label><div class="row2"><textarea id="ct" rows="1" oninput="ctxt=this.value" placeholder="チャットの文をペースト">${esc(ctxt)}</textarea><button class="btn sm" onclick="check()">答え合わせ</button></div><div id="fb">${fb}</div></div>`:""}
+function ansH(it,t){
+ if(t==2)return "";
+ return `<div class="ans"><span>${t==6||t==8?"れいの答え":"こたえ"}</span><p>${it.a} ${sayB(it.a)}</p></div>`+(it.h&&t!=8?ptH(it):"")}
+function sortH(it){
+ const w=it.w;
+ let h=`<div class="lab">${M[m].lab}</div>`;
+ h+=`<div class="slot">${pick.length?pick.map(k=>`<button class="chip in" onclick="un(${k})">${w[k]}</button>`).join(""):`<span class="ph">ここに ならべる（タップでもどる）</span>`}</div>`;
+ if(!rev)h+=`<div class="bank">${ord.filter(k=>!pick.includes(k)).map(k=>`<button class="chip" onclick="pk(${k})">${w[k]}</button>`).join("")}</div>`;
+ if(msg)h+=`<div class="msg ${rev?"good":"bad"}">${msg}</div>`;
+ if(hint||rev)h+=ptH(it);
+ h+=rev?`<div class="ans"><span>こたえ</span><p>${it.a} ${sayB(it.a)}</p></div><button id="pri" class="btn ok" onclick="nx(1)">⭕ つぎへ</button>`:`<div class="row"><button id="pri" class="btn" onclick="chk()">チェック ✔</button><button class="btn ghost" onclick="clr()">リセット</button></div>`+hintB(it);
+ return h}
+function timeH(it){
+ let h=`<div class="lab">${M[m].lab}</div>`;
+ if(ph==0)return h+`<div class="jp">じゅんびは いい？</div><div class="row"><button class="btn ghost${sec==3?" sel":""}" onclick="sec=3;render()">3秒</button><button class="btn ghost${sec==5?" sel":""}" onclick="sec=5;render()">5秒</button></div><button id="pri" class="btn" onclick="go3()">スタート ▶</button>`;
+ h+=`<div class="kw">${it.k.map(x=>`<b>${x}</b>`).join("")}</div>`;
+ if(ph==1)return h+`<div class="cd" id="cd">${cd}</div>`;
+ h+=chkH();
+ return h+(rev?ansH(it,7)+judge():`<div class="msg bad">⏰ そこまで！ 言えたかな？</div><button id="pri" class="btn" onclick="show()">こたえを見る 👀</button>`)}
+function chainH(it){
+ const n=it.s.length;
+ let h=`<div class="lab">${M[m].lab}</div><div class="en">${it.q} ${sayB(it.q)}</div>`;
+ h+=`<div class="flow">${it.s.map((s,k)=>`<b class="${k<rs?"done":k==rs?"now":""}">${s[0]}</b>`).join("<em>›</em>")}</div>`;
+ if(rs<n)h+=`<div class="jp">🧑‍🏫 「${it.s[rs][0]}」の文は？</div>`;
+ if(rs>0)h+=`<div class="ans">${it.s.slice(0,rs).map(s=>`<p><small>${s[0]}</small>${s[1]} ${sayB(s[1])}</p>`).join("")}</div>`;
+ return h+(rs<n?`<button id="pri" class="btn" onclick="rs++;render()">こたえを見る 👀 (${rs}/${n})</button>`:judge())}
+function render(){
+ const D=M[m],t=D.id,n=Q[m].length,it=cur();
+ document.documentElement.style.setProperty("--ac",D.ac);
+ $("#tabs").innerHTML=M.map((x,k)=>`<button class="tab${k==m?" on":""}" style="--c:${x.ac}" onclick="go(${k})"><span>${x.ic}</span>${x.nm}</button>`).join("");
+ $("#total").textContent=R.flat().filter(x=>x===1).length;
+ $("#bR").classList.toggle("on",rnd);$("#bT").classList.toggle("on",tool);
+ let h=`<div class="top"><h2>${D.ic} ${D.nm}</h2><span class="cnt">${Math.min(i+1,n)} / ${n}</span><p>${D.ds}</p></div>`;
+ if(!it){
+  const ok=R[m].filter(x=>x===1).length,ms=n-ok,pc=ok/n;
+  h+=`<div class="card end"><div class="big">${pc>=.9?"⭐⭐⭐":pc>=.6?"⭐⭐":"⭐"}</div><h3>${D.nm} おわり！</h3><p class="sc">${ok} / ${n} できた</p>`;
+  if(ms)h+=`<button class="btn" onclick="again()">にがてだけ もういちど（${ms}もん）</button>`;
+  h+=`<button class="btn ghost" onclick="go(${m})">ぜんぶ もういちど</button>`;
+  if(m<M.length-1)h+=`<button class="btn ghost" onclick="go(${m+1})">つぎのモードへ</button>`;
+  $("#stage").innerHTML=h+"</div>";return}
+ h+=`<div class="dots">${Q[m].map((_,k)=>`<i class="${k<i?"d":k==i?"c":""}"></i>`).join("")}</div><div class="card">`;
+ if(t==4)h+=sortH(it);
+ else if(t==7)h+=timeH(it);
+ else if(t==2)h+=chainH(it);
+ else{
+  h+=`<div class="lab">${D.lab}</div>`;
+  h+=t==6?`<div class="jp">${it.q}</div>`:`<div class="en">${it.q}${t!=1?" "+sayB(it.q):""}</div>`;
+  if(it.t)h+=`<div class="tag">⏰ ${it.t}</div>`;
+  h+=chkH();
+  if(hint||(rev&&t==8))h+=ptH(it);
+  h+=rev?ansH(it,t)+judge():hintB(it)+`<button id="pri" class="btn" onclick="show()">こたえを見る 👀</button>`}
+ h+=`</div><div class="nav"><button class="btn ghost sm" onclick="pv()">◀ もどる</button><button class="btn ghost sm" onclick="nx(0)">スキップ ▶</button></div>`;
+ $("#stage").innerHTML=h;
+}
+go(0);
+</script>
+</body>
+</html>
