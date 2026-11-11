@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Modal Verbs — 助動詞の難構文</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600;800&display=swap">
+<style>
+:root{--bg:#f4f6fa;--card:#fff;--ink:#0f172a;--sub:#566178;--line:#d5dbe7;--accent:#1e4fd6;--accent-ink:#fff;--ok-bg:#dff5ea;--ok:#12805c;--ng-bg:#fde4e4;--ng:#c43d3d;--mark:#ffe9a8;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1220;--card:#131c2e;--ink:#e8edf7;--sub:#9aa7bf;--line:#26324a;--accent:#7ea2ff;--accent-ink:#0b1220;--ok-bg:#0f3a2d;--ok:#4cc79a;--ng-bg:#43212a;--ng:#ff8a8a;--mark:#5a4a12}}
+:root[data-theme="dark"]{--bg:#0b1220;--card:#131c2e;--ink:#e8edf7;--sub:#9aa7bf;--line:#26324a;--accent:#7ea2ff;--accent-ink:#0b1220;--ok-bg:#0f3a2d;--ok:#4cc79a;--ng-bg:#43212a;--ng:#ff8a8a;--mark:#5a4a12}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;line-height:1.75;font-size:16px}
+main{max-width:780px;margin:0 auto;padding:28px 18px 70px}
+h1,h2,h3{font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;margin:0}
+h1{font-size:clamp(30px,6vw,46px);font-weight:800;line-height:1.2;letter-spacing:.01em}
+h1 small{display:block;font-family:"Noto Sans JP",sans-serif;font-size:15px;font-weight:500;color:var(--sub);margin-top:10px;letter-spacing:0}
+h2{font-size:22px;font-weight:800;margin:44px 0 6px}
+.gl{color:var(--sub);margin:0 0 14px;font-size:15px}
+.cards{display:grid;gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.card h3{font-size:18px;font-weight:800}
+.card .ja{margin:2px 0 8px;color:var(--sub);font-size:15px}
+.ex{display:flex;gap:10px;align-items:center;margin:6px 0;font-size:17px}
+.ex button{flex:none}
+.form{margin:10px 0 0;padding:8px 12px;border-left:3px solid var(--accent);background:var(--bg);font-size:14px}
+button,select,input{font:inherit;color:inherit}
+.btn{border:0;background:var(--accent);color:var(--accent-ink);border-radius:8px;padding:10px 18px;font-weight:700;cursor:pointer;min-height:44px}
+.btn.ghost{background:transparent;border:1.5px solid var(--accent);color:var(--accent)}
+.btn.small{padding:4px 12px;min-height:34px;font-size:14px}
+.btn:focus-visible,.opt:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.voice{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--card);font-size:14px}
+.voice .st{flex:1 1 220px;font-weight:700}
+.st.ok{color:var(--ok)}.st.ng{color:var(--ng)}
+select{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 8px;max-width:100%}
+.prog{height:6px;background:var(--line);border-radius:99px;overflow:hidden;margin:10px 0 14px}
+.prog i{display:block;height:100%;width:0;background:var(--accent);transition:width .4s}
+.qhead{display:flex;justify-content:space-between;gap:8px;font-size:14px;color:var(--sub);font-weight:700}
+.play{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 14px}
+.q{font-size:18px;font-weight:700;margin:6px 0 12px}
+.opts{display:grid;gap:10px}
+.opt{text-align:left;background:var(--bg);border:1.5px solid var(--line);border-radius:8px;padding:12px 16px;cursor:pointer;font-weight:500;min-height:48px}
+.opt.ok{background:var(--ok-bg);border-color:var(--ok)}.opt.ng{background:var(--ng-bg);border-color:var(--ng)}
+.opt:disabled{cursor:default}
+.sent{font-size:19px;line-height:2.3}
+.sent input{width:7.5em;border:0;border-bottom:2px solid var(--accent);background:transparent;text-align:center;padding:2px 4px;font-size:19px;border-radius:0}
+.sent input.ok{border-color:var(--ok);color:var(--ok)}.sent input.ng{border-color:var(--ng);color:var(--ng)}
+.fb{margin-top:16px;padding:14px 16px;border-radius:8px;background:var(--bg);border:1px solid var(--line)}
+.fb .script{font-size:17px;margin:6px 0 8px}
+mark{background:var(--mark);color:inherit;border-radius:4px;padding:0 3px}
+.words{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.chip{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:3px 12px;font-size:14px;cursor:pointer}
+.score{font-family:"Noto Serif JP",serif;font-size:56px;font-weight:800;margin:0}
+.hide{display:none}
+.wordgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px;text-align:left}
+@media (prefers-reduced-motion:reduce){.prog i{transition:none}}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+.stick{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;display:flex;align-items:center;gap:12px;background:var(--bg);padding:10px 0;margin-top:14px;font-size:14px;font-weight:700;color:var(--sub);border-bottom:1px solid var(--line)}
+.stick .prog{flex:1;margin:0}
+.ph{font-size:20px;font-weight:800;margin:34px 0 12px}
+.ph small{display:block;font-family:"Noto Sans JP",sans-serif;font-size:14px;font-weight:500;color:var(--sub);margin-top:2px}
+.qc{margin-bottom:14px}
+.qn{font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.08em}
+.pas{margin-bottom:14px;font-size:16px;line-height:1.9}.pas p{margin:0 0 10px}
+#list{margin-top:6px}
+.pts{margin:6px 0 10px;padding-left:1.3em}.pts li{margin:4px 0;font-size:15px}
+.lab{font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.08em;margin-top:6px}
+.sub{color:var(--sub);font-size:14px}
+.cau{margin:8px 0 0;padding:8px 12px;border-left:3px solid var(--ng);background:var(--bg);font-size:14px}
+table.cmp{border-collapse:collapse;width:100%;min-width:560px;font-size:14px}.cmp th,.cmp td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}.cmp th{background:var(--bg)}
+.q{white-space:pre-line}
+.fl{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:8px 0 12px}
+.fi{flex:1 1 110px;min-width:100px;text-align:center;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:8px 6px}
+.fi span{display:block;font-size:30px;line-height:1.2}.fi b{display:block;font-size:13px;line-height:1.4}.fi small{display:block;font-size:12px;color:var(--sub)}
+.fl i{font-style:normal;color:var(--accent);font-weight:800;font-size:20px}
+.gauge{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;margin:8px 0 12px}
+.gauge div{text-align:center;padding:8px 2px;border-radius:8px;background:color-mix(in srgb,var(--accent) calc(var(--k)*100%),var(--card));color:var(--ink);font-size:12px;line-height:1.4}
+.gauge b{display:block;font-size:13px}.gauge span,.gauge em{display:block;font-style:normal}.gauge em{font-weight:700}
+.ic{font-size:26px;margin-right:8px;vertical-align:-3px}
+.svg{width:100%;max-width:420px;display:block;margin:6px auto}
+.more{margin-top:10px}.more summary{cursor:pointer;font-weight:700;color:var(--accent);font-size:14px}
+.hg{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin-top:12px}
+.hc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;text-align:center}
+.hc span{font-size:34px}.hc h4{margin:2px 0;font-size:15px;color:var(--accent)}.hc p{margin:2px 0;font-size:14px}.hc small{color:var(--sub)}
+.cmp.s{min-width:0}
+</style>
+</head>
+<body>
+<main>
+<h1>Modal Verbs<small>助動詞の難構文 — 図とイラストでイメージをつかむ</small></h1>
+<p class="gl" style="margin-top:14px">助動詞は「確信の強さ」「過去への推量」「慣用的な形」の3つで整理できます。まず図で全体像をつかみ、例文の下の「くわしい説明」で仕組みを確認しよう。</p>
+<div class="voice">
+ <span class="st" id="vstat">音声を確認中…</span>
+ <select id="vsel" aria-label="声の選択"></select>
+ <button class="btn small ghost" id="vtest">テスト再生</button>
+</div>
+<p class="gl" style="margin:4px 0 0">例文の ▶ ボタンで、英文を女性の声で聞けます。</p>
+<h2>① 確信度のものさし</h2>
+<section class="cards" id="g0"></section>
+<h2>② 難しい構文を攻略</h2>
+<section class="cards" id="g1"></section>
+<h2>まとめ① 助動詞＋have＋過去分詞 イメージ図鑑</h2>
+<div id="s1"></div>
+<h2>まとめ② 助言・義務の強さ</h2>
+<div id="s2"></div>
+<h2>演習</h2>
+<p class="gl">Part 1 選んで確かめよう19問 / Part 2 書いてみよう12問 / Part 3 長文読解3問。上から順にスクロールして解いていこう。</p>
+<div class="stick"><span id="qnum"></span><div class="prog"><i id="bar"></i></div><span id="qscore"></span></div>
+<div id="list"></div>
+
+<section id="result" class="card hide" style="text-align:center;margin-top:24px">
+ <p class="score" id="rscore"></p>
+ <p id="rparts"></p>
+ <button class="btn" id="again">もう一度</button>
+ <h2 style="text-align:left">単語リスト（タップで発音）</h2>
+ <div class="wordgrid" id="wordgrid"></div>
+</section>
+</main>
+
+<script>
+const fl=(...a)=>`<div class="fl">${a.map(x=>x==="→"?"<i>→</i>":`<div class="fi"><span>${x[0]}</span><b>${x[1]}</b>${x[2]?`<small>${x[2]}</small>`:""}</div>`).join("")}</div>`;
+const gauge=a=>`<div class="gauge">${a.map((x,i)=>`<div style="--k:${.06+i*.08}"><b>${x[0]}</b><span>${x[1]}</span><em>${x[2]}</em></div>`).join("")}</div>`;
+const tl=(a,b,c)=>`<svg class="svg" viewBox="0 0 320 100" role="img" aria-label="時間の図：${a}と${b}"><line x1="20" y1="72" x2="300" y2="72" stroke="var(--line)" stroke-width="3"/><circle cx="70" cy="72" r="8" fill="var(--ng)"/><circle cx="250" cy="72" r="8" fill="var(--accent)"/><path d="M250 60 Q160 6 80 58" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-dasharray="5 4"/><polygon points="72,50 88,52 82,66" fill="var(--accent)"/><g font-size="12" fill="currentColor" text-anchor="middle"><text x="70" y="94">${a}</text><text x="250" y="94">${b}</text><text x="160" y="24" font-weight="700" fill="var(--accent)">${c}</text></g></svg>`;
+const FIG={
+"①":{ic:"📏",f:gauge([["can't","〜はずがない","ほぼ0%"],["might","〜かもしれない","約30%"],["may","〜かもしれない","約50%"],["should","〜はずだ","約75%"],["must","〜に違いない","90%以上"]])},
+"②":{ic:"⏪",f:tl("過去の出来事","今","今の私が推量する")},
+"③":{ic:"🔍",f:fl(["📵","電話がない","証拠"],"→",["💡","must have forgotten","忘れたに違いない"])},
+"④":{ic:"🤔",f:fl(["🚌","バスは行った？","事実は不明"],"→",["🤔","may have missed","乗り遅れたかも"])},
+"⑤":{ic:"😢",f:fl(["📚","勉強しなかった","事実"],"→",["😢","should have studied","すべきだったのに"])},
+"⑥":{ic:"🏆",f:fl(["🥇","1位をとった","理由"],"→",["😊","may well be proud","誇るのももっとも"])},
+"⑦":{ic:"🚦",f:fl(["🚦","道路を渡る","危険"],"→",["👀","cannot be too careful","注意しすぎはない"])},
+"⑧":{ic:"👨‍⚕️",f:fl(["👨‍⚕️","医者「休んで」","提案"],"→",["🛌","that he (should) rest","原形！s なし"])},
+"⑨":{ic:"❗",f:fl(["😲","彼がそんなことを？","驚き"],"→",["❗","should say","驚きの should"])}
+};
+const L=[
+{g:0,t:"① 確信度のものさし（現在・未来の推量）",ja:"「〜に違いない」「〜かもしれない」を、確信の強さで使い分けます。",
+ pts:["must（〜に違いない）：確信ほぼ100%に近い強い推量","will／should／ought to（〜のはずだ・〜だろう）：当然そうなるはずという推量","may／might／could（〜かもしれない）：五分五分以下。might は may より少し確信が弱い（過去形ではなく、確信度の違い）","can't／couldn't（〜のはずがない）：must の否定にあたる。mustn't は「禁止」なので推量には使わない"],
+ ex:[["She must be tired after the long flight.","彼女は長旅のあとで、疲れているに違いない。"],["He can't be a doctor. He looks too young.","彼が医者のはずがない。若すぎるように見える。"],["It may rain this evening, so take an umbrella.","今晩は雨が降るかもしれないから、傘を持っていきなさい。"]],
+ eq:"must ⇄ can't（推量の肯定と否定のペア）",cau:"mustn't は「〜してはいけない」（禁止）。「〜のはずがない」は can't を使います。"},
+{g:0,t:"② 過去への推量は「助動詞＋have＋過去分詞」",ja:"同じ確信度のまま、「過去のこと」についての推量にする形です。",
+ pts:["He must be tired. → He must have been tired.（疲れていたに違いない）","変えるのは助動詞の後ろだけ。助動詞そのものは変わらない","may を might にしても過去にはならない。過去を表すのは have ＋ 過去分詞の部分","「その時点より前に起こったこと」について、今の時点から推量する"],
+ ex:[["He must have been tired after the long trip.","彼は長旅のあとで、疲れていたに違いない。"],["She may have missed the last train.","彼女は終電を逃したのかもしれない。"]],
+ eq:"現在：must＋原形 → 過去：must＋have＋過去分詞",cau:"「〜しなければならなかった」は had to ～。must have p.p. とは意味がまったく違います。"},
+{g:1,t:"③ must have p.p. ／ can't have p.p.（過去の強い確信）",ja:"「〜したに違いない」「〜したはずがない」。根拠のある推量です。",
+ pts:["must have p.p.＝〜したに違いない（強い確信）","can't／couldn't have p.p.＝〜したはずがない","文脈に根拠（証拠・理由）があることが多い：「電話がない → 忘れたに違いない」","仮定法の would have p.p.（〜しただろう）とは別物。推量は must have p.p."],
+ ex:[["He must have forgotten our appointment. He hasn't called.","彼は約束を忘れたに違いない。電話もない。"],["She can't have said such a thing. She is always kind.","彼女がそんなことを言ったはずがない。いつも親切だから。"]],
+ eq:"must have p.p. ⇄ can't have p.p.",cau:"can't have p.p. は、「〜しなかった」という事実についての確信を表します。"},
+{g:1,t:"④ may／might have p.p. ／ could have p.p.",ja:"「〜したかもしれない」。事実は分からない、という過去の可能性です。",
+ pts:["may／might have p.p.＝〜したかもしれない（過去の可能性）","could have p.p. には2つの意味がある：①〜したかもしれない（推量）②〜できたのに（実際はしなかった）","might have p.p. も「〜できたのに／〜してもよかったのに」と非難の意味になることがある","どちらの意味かは、前後の文脈で判断する"],
+ ex:[["She may have missed the bus. Let's wait a little.","彼女はバスに乗り遅れたのかもしれない。少し待とう。"],["You could have told me earlier.","もっと早く言ってくれればよかったのに。"]],
+ eq:"may have p.p. ≒ Perhaps she missed ～.",cau:"could have p.p. が「できたのに」の意味のとき、実際には行われていません（仮定法的な意味）。"},
+{g:1,t:"⑤ should have p.p. ／ needn't have p.p.",ja:"過去の「後悔・非難」と、「無駄だった」を表す形です。",
+ pts:["should have p.p.＝〜すべきだったのに（しなかった）。ought to have p.p. も同じ","shouldn't have p.p.＝〜すべきではなかったのに（してしまった）","needn't have p.p.＝〜する必要はなかったのに（してしまった）","didn't need to ～＝〜する必要がなかった（実際にしたかどうかは文脈次第）"],
+ ex:[["I should have studied harder for the test.","テストに向けて、もっと勉強すべきだった。"],["You needn't have bought so much food. We have plenty.","そんなにたくさん食べ物を買う必要はなかったのに。十分あるよ。"],["I didn't need to buy a ticket because I had a pass.","定期券があったので、切符を買う必要がなかった。"]],
+ eq:"should have p.p. ≒ I wish I had p.p.（過去の後悔）",cau:"「〜すべきだ（今）」は should ＋ 原形。「〜すべきだった」は should have p.p. です。"},
+{g:1,t:"⑥ may well ／ might as well",ja:"may と might を使った、2つの特別な表現です。",
+ pts:["may well ＋ 原形＝〜するのももっともだ／たぶん〜だろう（well は「十分に」）","might［may］as well ＋ 原形＝〜してもよさそうだ／〜したほうがましだ（ほかに良い方法がないときの言い方）","may as well A as B＝BするくらいならAするほうがましだ","may well は「当然」と「たぶん」の2つの意味がある。文脈で判断する"],
+ ex:[["You may well be proud of your son. He won first prize.","息子さんを誇りに思うのももっともです。1位を取ったのだから。"],["There is nothing to do. We might as well go home.","することがないから、帰ったほうがましだ。"],["You may as well throw your money away as lend it to him.","彼にお金を貸すくらいなら、捨てたほうがましだ。"]],
+ eq:"may well ≒ have good reason to ／ quite likely to",cau:"might as well は積極的な提案ではありません。強くすすめるなら had better を使います。"},
+{g:1,t:"⑦ cannot … too ～ ／ cannot help ～ing",ja:"can を使った、否定の慣用表現です。",
+ pts:["cannot ～ too …＝いくら…しても～しすぎることはない","cannot help ～ing＝〜せずにはいられない（≒ cannot but ＋ 原形）","cannot ～ without ～ing＝～すれば必ず…する（二重否定）","can't help it＝どうしようもない"],
+ ex:[["You cannot be too careful when you cross the road.","道路を渡るときは、いくら注意してもしすぎることはない。"],["I couldn't help laughing at his joke.","彼の冗談に、笑わずにはいられなかった。"],["We cannot see this picture without thinking of our school days.","この写真を見ると、必ず学生時代を思い出す。"]],
+ eq:"cannot help ～ing ≒ cannot but ＋ 原形",cau:"cannot help ～ing の ～ing は動名詞。cannot help to ～ とは言いません。"},
+{g:1,t:"⑧ should の特別用法①（提案・要求・必要の that節）",ja:"「提案・要求・必要」を表す語の後ろの that節で使います。",
+ pts:["suggest, insist, demand, recommend, propose, require, order の後の that節は (should) ＋ 原形","important, necessary, essential, vital, natural などの後の that節も同じ","should は省略できる。省略しても動詞は原形のまま（三単現の s をつけない）","insist や suggest が「事実を述べる」意味のときは、ふつうの時制になる"],
+ ex:[["The doctor recommended that he (should) take a rest.","医者は、彼が休養をとるよう勧めた。"],["It is essential that every student be on time.","生徒全員が時間どおりに来ることが不可欠だ。"],["He insisted that she was wrong.","彼は、彼女が間違っていると主張した。（事実の主張なので was）"]],
+ eq:"(should) ＋ 原形 ＝ 仮定法現在（米式では原形のみ）",cau:"insist that ～ が「要求」なら (should) ＋ 原形、「事実の主張」ならふつうの時制。意味で見分けます。"},
+{g:1,t:"⑨ should の特別用法②（驚き・万一）",ja:"義務ではなく、話し手の感情や「万一」を表す should です。",
+ pts:["It is strange／surprising／a pity など ＋ that ～ should ＋ 原形＝～するなんて（驚き・意外・残念）","If S should ＋ 原形＝万一～なら（可能性が低い仮定）。倒置して Should S ～, とも言う","Why should I ～?＝どうして私が～しなければならないのか（反語）","lest S (should) ＋ 原形＝～しないように（文語的）"],
+ ex:[["It is surprising that he should say such a thing.","彼がそんなことを言うなんて、驚きだ。"],["If you should find my wallet, please call me.","万一私の財布を見つけたら、電話をください。"],["Why should I apologize? I did nothing wrong.","どうして私が謝らなければならないの？ 何も悪いことはしていない。"]],
+ eq:"If you should ～ ＝ Should you ～,（倒置）",cau:"感情の should は「～すべき」という意味ではありません。驚きや意外感を表します。"},
+{g:1,t:"⑩ had better ＋ 原形",ic:"⚠️",fig:fl(["🤒","熱がある"],"→",["🏥","had better see a doctor","行ったほうがいい"],"→",["⚠️","行かないと…","困ることになる"]),ja:"「〜したほうがいい」。実は「しないと困ったことになる」という強い忠告です。",
+ pts:["形：had better ＋ 原形（to はつけない）。否定は had better not ＋ 原形","had は過去形ではなく、現在・未来についての忠告。会話では You'd better ～ と短縮する","「しないと悪いことが起こる」という含みがあり、目上の人には失礼になる","やわらかい助言は should、常識的な助言は ought to を使う"],
+ ex:[["You had better see a doctor.","医者に診てもらったほうがいい（さもないと悪化する）。"],["You'd better not stay up so late.","そんなに遅くまで起きていないほうがいい。"]],
+ eq:"had better ≒ If you don't, something bad may happen.",cau:"had better は「強い忠告・警告」。先生や上司には I think you should ～ のように言うほうが丁寧です。"},
+{g:1,t:"⑪ used to ／ would（過去の習慣）の比較",ic:"🕰️",fig:tl("かつて","今","今は違う")+`<div style="overflow-x:auto"><table class="cmp s"><tr><th>場面</th><th>used to</th><th>would</th></tr><tr><td>🌳 状態：以前は〜だった<br><small>There used to be a tree.</small></td><td>○</td><td>×</td></tr><tr><td>🏊 習慣：よく〜したものだ<br><small>We would swim every summer.</small></td><td>○</td><td>○</td></tr><tr><td>🔙「今はもう違う」という含み</td><td>強い</td><td>弱い</td></tr></table></div>`,ja:"どちらも「昔は〜した」。ただし、状態に使えるのは used to だけです。",
+ pts:["used to ＋ 原形：過去の「状態」にも「習慣」にも使える。今はもう違う、という含みがある","would ＋ 原形：過去の「習慣」だけ。When I was a child など、過去の時を示す語句と一緒に使うことが多い","be, have, live, like などの状態を表す動詞には would は使えない","be used to ＋ 名詞／～ing は「〜に慣れている」で、まったく別の表現"],
+ ex:[["There used to be a big tree in front of the station.","以前、駅前に大きな木があった。（今はない）"],["When I was a child, we would swim in the river every summer.","子どものころ、私たちは毎年夏にその川でよく泳いだものだ。"],["I am used to getting up early.","私は早起きに慣れている。"]],
+ eq:"used to ≒ 昔はそうだったが、今は違う",cau:"used to ＋ 原形（以前は〜だった）と be used to ＋ ～ing（〜に慣れている）は、形も意味も違います。"},
+{g:1,t:"⑫ dare（思い切って〜する／〜する勇気がある）",ic:"🧗",fig:fl(["🏔️","高い崖"],"→",["😨","ためらう"],"→",["💪","dare to jump","思い切って跳ぶ"]),ja:"dare ＝ 「恐れずに〜する」。助動詞としても、一般動詞としても使えます。",
+ pts:["助動詞の dare：主に否定文・疑問文・if／whether節で使い、三単現でも s をつけない（He dare not go.）。後ろは原形","一般動詞の dare：肯定文で多い。She dared to speak up.／He didn't dare (to) ask.（疑問・否定では to を省略できる）","How dare you ～!＝よくも〜できるな（怒り）／Don't you dare ～!＝〜しようものなら承知しないよ","I dare say ～＝たぶん〜だろう（やや古風）"],
+ ex:[["He dare not go there alone.","彼は一人でそこへ行く勇気がない。"],["She dared to tell the truth in front of everyone.","彼女は思い切って、みんなの前で本当のことを言った。"],["How dare you speak to me like that!","よくも私にそんな口がきけるわね！"]],
+ eq:"dare to ＋ 原形 ≒ have the courage to ＋ 原形",cau:"need も同じ仕組みです。助動詞の need は否定・疑問で使い（need not ／ Need I ～?）、肯定文では need to を使います。"},
+{g:1,t:"⑬ would rather ／ ought to ／ be supposed to",ic:"🎯",fig:fl(["🏠","would rather","むしろ〜したい"],["📏","ought to","〜すべきだ"],["📋","be supposed to","〜することになっている"]),ja:"意味が近くて混同しやすい3つの表現を整理します。",
+ pts:["would rather A (than B)＝（BよりむしろAしたい）。否定は would rather not ＋ 原形","would rather ＋ 主語 ＋ 過去形＝（相手に）〜してほしい","ought to ＋ 原形＝〜すべきだ（常識・道徳。should より客観的）。否定は ought not to","be supposed to ＋ 原形＝〜することになっている（規則・予定）"],
+ ex:[["I would rather stay home than go out in this weather.","こんな天気では、外出するよりむしろ家にいたい。"],["You ought to apologize to her.","彼女に謝るべきだ。"],["Students are supposed to wear a uniform here.","ここでは、生徒は制服を着ることになっている。"]],
+ eq:"be supposed to ≒ be expected to",cau:"be supposed to には「〜するはずだ」の意味もあります：He is supposed to arrive at noon.（正午に着く予定だ）"}
+
+];
+const P=[
+"Last night, Ken did not answer any of our messages. At first, I thought he might have gone to bed early, but Maria said, \"He can't have gone to bed. He told us he had a report to finish.\" She was right. This morning, Ken explained that his phone had run out of battery while he was writing. \"You should have called my home,\" he said with a smile, \"but you needn't have worried so much.\" Maria suggested that we all buy portable chargers. She is the careful type, and she says you cannot be too careful when something important is at stake."
+];
+const T=[
+{j:"彼はまだ来ていない。道に迷ったのかもしれない。",t:"He hasn't come yet. He {may|might} have {got|gotten} lost.",e:"過去の可能性 → may／might have p.p."},
+{j:"彼女がそんなことを言ったはずがない。",t:"She {can't|cannot|couldn't} have said such a thing.",e:"過去の強い否定の確信 → can't have p.p."},
+{j:"もっと早く教えてくれればよかったのに。",t:"You {should|ought to|could} have told me earlier.",e:"過去の後悔・非難 → should have p.p.（could have p.p. も可）"},
+{j:"そんなにたくさん買う必要はなかったのに。",t:"You {needn't|need not} have {bought} so much.",e:"必要なかったのにした → needn't have p.p."},
+{j:"彼が成功を誇りに思うのももっともだ。",t:"He {may} {well} be proud of his success.",e:"may well ＝ 〜するのももっともだ。"},
+{j:"ほかに方法がないから、もう一度やってみたほうがましだ。",t:"There is no other way. We {might|may} as {well} try again.",e:"might as well ＝ 〜したほうがましだ。"},
+{j:"彼女は、私がもっと勉強するよう強く求めた。",t:"She insisted that I {study} harder.",e:"要求の that節 → (should) ＋ 原形。studied や studies にしない。"},
+{j:"万一雨が降ったら、試合は中止になります。",t:"If it {should} rain, the game {will|would} be cancelled.",e:"If S should ＋ 原形 ＝ 万一〜なら。"}
+];
+const LQ=[
+{p:0,q:"マリアが「ケンは寝たはずがない」と考えた理由は？",o:["ケンが早く寝る習慣がないから","ケンが、終わらせるレポートがあると言っていたから","ケンの家の電気がついていたから","ケンが電話に出たから"],a:1,e:"He can't have gone to bed. He told us he had a report to finish. can't have p.p. には根拠が続きます。",v:[["report","レポート"],["run out of","〜がなくなる"]]},
+{p:0,q:"you needn't have worried so much の意味に最も近いのは？",o:["そんなに心配しなくてもいい（これから）","そんなに心配する必要はなかったのに（実際は心配した）","そんなに心配したに違いない","そんなに心配すべきだった"],a:1,e:"needn't have p.p. =「〜する必要はなかったのに（してしまった）」。ケンは、みんなが心配したことを知っています。",v:[["worry","心配する"]]},
+{p:0,q:"Maria suggested that we all buy portable chargers. の we all buy の動詞が原形なのはなぜ？",o:["現在の事実だから","(should) ＋ 原形の形（提案の that節）だから","過去の習慣だから","主語が複数だから"],a:1,e:"suggest などの提案を表す動詞のあとでは、that節の動詞を (should) ＋ 原形にします。主語が we でも、he でも、動詞は原形です。",v:[["portable charger","携帯充電器"],["suggest","提案する"]]}
+];
+const NQ=[
+{q:"「熱があるから、医者に診てもらったほうがいい。」\nYou ( ) see a doctor.",o:["had better","would rather","used to","dare"],a:0,e:"had better ＋ 原形 ＝ 〜したほうがいい（しないと困る）。to はつけません。"},
+{q:"「この駅前には以前、大きな木があった。」\nThere ( ) a big tree in front of this station.",o:["would be","used to be","had better be","dare be"],a:1,e:"「状態」を表すときは used to のみ。would は習慣だけに使います。"},
+{q:"「子どものころ、私たちはよくこの川で泳いだものだ。」\nWhen I was a child, we ( ) swim in this river.",o:["would","are used to","had better","dare"],a:0,e:"過去の習慣（よく〜したものだ）は would でも used to でも表せます。are used to は「慣れている」で別の意味です。"},
+{q:"「私は早起きに慣れている。」\nI am ( ) getting up early.",o:["used to","use to","used for","would"],a:0,e:"be used to ＋ ～ing ＝ 〜に慣れている。used to ＋ 原形（以前は〜だった）と区別しましょう。"},
+{q:"「彼は一人でそこへ行く勇気がない。」\nHe ( ) go there alone.",o:["dare not","dares not","is dare not","dare not to"],a:0,e:"助動詞の dare は、三単現でも s をつけず、否定は dare not ＋ 原形。"},
+{q:"「よくも私にそんなことが言えるな！」\nHow ( ) you say such a thing to me!",o:["dare","do","would","should"],a:0,e:"How dare you ～! ＝ よくも〜できるな。怒りを表す決まった形です。"},
+{q:"「あの鍵は持っていたのに、彼は私に頼まなかった。」\nHe ( ) asked me for help.",o:["could have","must have","can't have","needn't have"],a:0,e:"実際はしなかったことを残念に思う → could have p.p. ＝ 〜できたのに。"},
+{q:"「彼女がうそをついたはずがない。正直な人だから。」\nShe ( ) lied. She is an honest person.",o:["must have","can't have","should have","may have"],a:1,e:"根拠のある強い否定の確信 → can't have p.p. ＝ 〜したはずがない。"},
+{q:"「大雨の中、出かけるべきではなかったのに（出かけてしまった）。」\nWe ( ) gone out in the heavy rain.",o:["shouldn't have","needn't have","can't have","mustn't have"],a:0,e:"してしまったことへの後悔 → shouldn't have p.p.。needn't have は「必要がなかった」という意味です。"}
+];
+const NT=[
+{j:"彼は一人でそこへ行く勇気がなかった。",t:"He didn't {dare} go there alone.",e:"dare は否定文で使う。後ろは原形（to は省略可）。"},
+{j:"そんなに遅くまで起きていないほうがいいよ。",t:"You {had} better {not} stay up so late.",e:"had better not ＋ 原形 ＝ 〜しないほうがいい。"},
+{j:"私は子どものころ、毎週日曜日に祖母の家へ行ったものだ。",t:"I {would|used to} visit my grandmother every Sunday when I was a child.",e:"過去の習慣 → would または used to。"},
+{j:"ここには昔、映画館があった。",t:"There {used} to be a cinema here.",e:"状態を表す過去 → used to be。would は使えません。"}
+];
+const HG=[["😲","must have p.p.","〜したに違いない","強い確信","He must have forgotten."],["🙅","can't have p.p.","〜したはずがない","強い否定の確信","She can't have lied."],["🤔","may／might have p.p.","〜したかもしれない","可能性","She may have missed it."],["😤","could have p.p.","〜できたのに","実際はしなかった","You could have asked me."],["😢","should／ought to have p.p.","〜すべきだったのに","後悔・非難","I should have studied."],["😣","shouldn't have p.p.","〜すべきでなかったのに","後悔","I shouldn't have said that."],["😅","needn't have p.p.","〜する必要はなかったのに","無駄だった","You needn't have waited."],["🌈","would have p.p.","〜しただろうに","仮定法の帰結","If I had known, I would have come."]];
+document.getElementById("s1").innerHTML=`<div class="card">${tl("過去の出来事","今","今の私が判断する")}${fl(["🔍","根拠があって確信","must／can't have p.p."],["❓","事実は不明","may／might have p.p."],["💭","しなかった／した事実への気持ち","should／could／needn't have p.p."])}</div><div class="hg">${HG.map(h=>`<div class="hc"><span>${h[0]}</span><h4>${h[1]}</h4><p><b>${h[2]}</b></p><small>${h[3]}</small><p>${h[4]}</p></div>`).join("")}</div>`;
+document.getElementById("s2").innerHTML=`<div class="card"><p class="gl" style="margin:0">右へ行くほど、強い助言・義務になる（目安）。</p>${gauge([["might as well","〜してもいいかな","消極的"],["should","〜したほうがいい","助言"],["ought to","〜すべきだ","常識"],["had better","〜しないとまずい","警告"],["must","〜しなければ","強い義務"]])}</div>`;
+const ITEMS=[
+{k:"mc",long:1,part:"Part 1　選んで確かめよう",q:"「彼は疲れているに違いない。」\nHe ( ) be tired.",o:["must","can't","might have","should"],a:0,e:"must ＝ 〜に違いない（強い確信）。現在の推量なので、後ろは原形 be です。",v:[]},
+{k:"mc",long:1,part:"Part 1　選んで確かめよう",q:"「あの話が本当のはずがない。」\nThat story ( ) be true.",o:["must","can't","may well","should"],a:1,e:"can't ＝ 〜のはずがない。must の否定の推量です。mustn't は禁止になるので使えません。",v:[]},
+{k:"mc",long:1,part:"Part 1　選んで確かめよう",q:"「彼女は電車に乗り遅れたかもしれない。」\nShe ( ) the train.",o:["must miss","may have missed","may missed","should miss"],a:1,e:"過去の可能性は may have p.p.。may のあとは原形（have）にします。",v:[]},
+{k:"mc",long:1,part:"Part 1　選んで確かめよう",q:"「もっと勉強しておくべきだった。」\nI ( ) harder.",o:["should study","should have studied","must have studied","may have studied"],a:1,e:"過去の後悔は should have p.p.。should study は「今、勉強すべきだ」の意味になります。",v:[]},
+{k:"mc",long:1,part:"Part 1　選んで確かめよう",q:"「あんなに早く出る必要はなかったのに（出てしまった）。」\nYou ( ) so early.",o:["needn't have left","needn't leave","mustn't have left","couldn't leave"],a:0,e:"必要がなかったのにしてしまった → needn't have p.p.",v:[]},
+{k:"mc",long:1,part:"Part 1　選んで確かめよう",q:"「どんなに用心しても、しすぎることはない。」\nYou cannot be ( ) careful.",o:["so","too","very","enough"],a:1,e:"cannot ～ too … ＝ いくら…しても～しすぎることはない。",v:[]},
+{k:"mc",long:1,part:"Part 1　選んで確かめよう",q:"「彼が自分の息子を誇りに思うのももっともだ。」\nHe ( ) be proud of his son.",o:["may as well","may well","might have","cannot help"],a:1,e:"may well ＝ 〜するのももっともだ。may as well は「〜したほうがましだ」で、意味が違います。",v:[]},
+{k:"mc",long:1,part:"Part 1　選んで確かめよう",q:"「ほかにやることもないし、帰ったほうがましだ。」\nWe ( ) go home.",o:["may well","had better to","might as well","cannot help"],a:2,e:"might as well ＋ 原形 ＝ 〜したほうがましだ。had better の後ろに to は不要です。",v:[]},
+{k:"mc",long:1,part:"Part 1　選んで確かめよう",q:"「医者は、彼が安静にするよう勧めた。」\nThe doctor recommended that he ( ) rest.",o:["takes","took","take","is taking"],a:2,e:"recommend の that節は (should) ＋ 原形。三単現の s はつけません。",v:[]},
+{k:"mc",long:1,part:"Part 1　選んで確かめよう",q:"「彼女が試験に落ちたなんて意外だ。」\nIt is surprising that she ( ) the exam.",o:["fails","should have failed","must fail","may failed"],a:1,e:"驚きを表す should。過去のことなので should have p.p. になります。",v:[]},
+...NQ.map(x=>({...x,k:"mc",long:1,part:"Part 1　選んで確かめよう",v:[]})),
+...T.concat(NT).map(x=>({...x,k:"ty",part:"Part 2　書いてみよう",v:[]})),
+...LQ.map(x=>({...x,k:"mc",long:1,part:"Part 3　長文読解"}))
+];
+const $=id=>document.getElementById(id);
+const esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+let voices=[],voice=null,fem=false;
+// voices
+const FEM=/samantha|karen|moira|tessa|victoria|fiona|serena|kate|allison|ava|susan|zira|aria|jenny|hazel|libby|sonia|michelle|natasha|clara|catherine|nicky|joanna|salli|kendra|emma|amy|olivia|female|google us english|google uk english female/i;
+const NOTMALE=v=>!/\bmale\b/i.test(v.name.replace(/female/ig,""));
+function loadVoices(){
+ const all=speechSynthesis.getVoices().filter(v=>/^en/i.test(v.lang));
+ const f=all.filter(v=>FEM.test(v.name)&&NOTMALE(v));
+ voices=f;fem=f.length>0;
+ const sel=$("vsel"),keep=sel.value;
+ sel.innerHTML=f.map((v,k)=>`<option value="${k}">${v.name} (${v.lang})</option>`).join("");
+ const st=$("vstat");
+ if(!fem){voice=all[0]||null;st.className="st ng";st.textContent="この端末では女性の声を確認できません。iPad・Mac・Windows（Edge/Chrome）での使用をおすすめします。";sel.classList.add("hide");return}
+ sel.classList.remove("hide");
+ const pref=f.findIndex(v=>/en-US/i.test(v.lang)&&/samantha|aria|jenny|ava|allison|zira|michelle/i.test(v.name));
+ sel.value=keep||String(pref>=0?pref:0);voice=f[+sel.value];
+ st.className="st ok";st.textContent="女性の声を確認しました："+voice.name;
+}
+if("speechSynthesis" in window){loadVoices();speechSynthesis.onvoiceschanged=loadVoices}else $("vstat").textContent="このブラウザは音声再生に対応していません。";
+$("vsel").onchange=e=>{voice=voices[+e.target.value];$("vstat").textContent="女性の声を確認しました："+voice.name;say("Hello. This is a test of the voice.",.9)};
+$("vtest").onclick=()=>say("Hello. This is a test of the voice. If I were a bird, I could fly to you.",.9);
+let _u=[],_t=0;
+function say(t,rate){
+ if(!("speechSynthesis" in window))return;
+ const ss=speechSynthesis;ss.cancel();clearTimeout(_t);
+ _t=setTimeout(()=>{
+  ss.resume();_u=[];
+  t.split(/(?<=[.!?])\s+/).forEach(p=>{
+   const u=new SpeechSynthesisUtterance(p);
+   if(voice){u.voice=voice;u.lang=voice.lang}else u.lang="en-US";
+   u.rate=rate||.9;u.pitch=fem?1.05:1.3;
+   _u.push(u);ss.speak(u);
+  });
+ },120);
+}
+// lesson cards
+const detail=c=>{const F=FIG[c.t[0]]||{},ic=c.ic||F.ic||"",fg=c.fig||F.f||"";
+ return `<h3><span class="ic">${ic}</span>${c.t}</h3><p class="ja">${c.ja}</p>${fg}`+c.ex.map(([e,j])=>`<div class="ex"><button class="btn small ghost" data-say="${esc(e).replace(/"/g,"&quot;")}" aria-label="再生">▶</button><span>${esc(e)}<br><small class="sub">${j}</small></span></div>`).join("")+`<details class="more"><summary>くわしい説明（仕組み・言い換え・注意）</summary><ul class="pts">${c.pts.map(p=>`<li>${p}</li>`).join("")}</ul><p class="form"><b>言い換え：</b>${c.eq}</p><p class="cau"><b>注意：</b>${c.cau}</p></details>`};
+L.forEach(c=>{
+ const d=document.createElement("div");d.className="card";
+ d.innerHTML=c.pts?detail(c):`<h3>${c.t}</h3><p class="ja">${c.ja}</p>`+c.en.map(e=>`<div class="ex"><button class="btn small ghost" data-say="${esc(e).replace(/"/g,"&quot;")}" aria-label="再生">▶</button><span>${esc(e)}</span></div>`).join("")+`<p class="form">${c.f}</p>`;
+ $("g"+c.g).appendChild(d);
+});
+document.querySelectorAll("[data-say]").forEach(b=>b.onclick=()=>say(b.dataset.say,.85));
+// quiz
+const HINT={"Part 1　選んで確かめよう":"日本語に合う英文になるよう、( ) に入る語句を選ぼう","Part 2　書いてみよう":"日本語に合うように、空所に英語を書こう","Part 3　長文読解":"長文を読んで答えよう"};
+function shuffle(a){for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+const parse=t=>t.split(/\{([^}]*)\}/);
+const filled=d=>parse(d.t).map((s,k)=>k%2?s.split("|")[0]:s).join("");
+const norm=s=>s.toLowerCase().replace(/[’‘]/g,"'").trim();
+let score=0,answered=0,seen=[],tally={};
+function upd(){$("qnum").textContent=`${answered} / ${ITEMS.length} 問`;$("qscore").textContent=`正解 ${score}`;$("bar").style.width=(answered/ITEMS.length*100)+"%"}
+function chips(arr){return arr.map(([w,j])=>`<button class="chip" data-w="${w.split(" - ")[0]}">▶ ${w}＝${j}</button>`).join("")}
+function bindChips(el){el.querySelectorAll(".chip").forEach(c=>c.onclick=()=>say(c.dataset.w,.8))}
+function fin(card,d,ok,html){
+ if(ok)score++;answered++;
+ const t=tally[d.part]||(tally[d.part]={c:0,n:0});t.n++;if(ok)t.c++;
+ const fb=card.querySelector(".fb"),fh=fb.querySelector(".fh"),sc=fb.querySelector(".script"),w=fb.querySelector(".words");
+ fh.textContent=ok?"正解":"不正解 — 一緒に確認しよう";fh.style.color=ok?"var(--ok)":"var(--ng)";
+ sc.innerHTML=html;sc.classList.toggle("hide",!html);
+ fb.querySelector(".ex2").textContent=d.e;
+ w.innerHTML=chips(d.v);bindChips(w);
+ d.v.forEach(x=>{if(!seen.some(y=>y[0]===x[0]))seen.push(x)});
+ fb.classList.remove("hide");upd();
+ if(answered===ITEMS.length)finish();
+}
+function build(){
+ const list=$("list");list.innerHTML="";score=0;answered=0;seen=[];tally={};
+ let lp="",lpas=-1;
+ ITEMS.forEach((d,n)=>{
+  if(d.part!==lp){lp=d.part;const h=document.createElement("h3");h.className="ph";h.innerHTML=`${d.part}<small>${HINT[d.part]}</small>`;list.appendChild(h)}
+  if(d.long&&d.p!==undefined&&d.p!==lpas){lpas=d.p;const b=document.createElement("div");b.className="card pas";b.innerHTML=`<p>${esc(P[d.p])}</p><div class="play" style="margin:0"><button class="btn small ghost">▶ 再生</button><button class="btn small ghost">ゆっくり</button></div>`;const bs=b.querySelectorAll("button");bs[0].onclick=()=>say(P[d.p],.92);bs[1].onclick=()=>say(P[d.p],.7);list.appendChild(b)}
+  const ty=d.k==="ty",ls=!ty&&!d.long;
+  const c=document.createElement("article");c.className="card qc";
+  c.innerHTML=`<div class="qn">問${n+1}</div>`+(ls?`<div class="play"><button class="btn">▶ 再生</button><button class="btn ghost">ゆっくり</button></div>`:"")+`<p class="q"></p><div class="opts"></div><div class="sent hide"></div><button class="btn chk hide">答え合わせ</button><div class="fb hide"><div class="fh" style="font-weight:700"></div><div class="script"></div><div class="ex2"></div><div class="words"></div></div>`;
+  c.querySelector(".q").textContent=ty?d.j:d.q;
+  let done=false;
+  if(ls){const bs=c.querySelectorAll(".play button");bs[0].onclick=()=>say(d.s,.92);bs[1].onclick=()=>say(d.s,.7)}
+  if(ty){
+   const se=c.querySelector(".sent");se.classList.remove("hide");
+   se.innerHTML=parse(d.t).map((s,k)=>k%2?`<input type="text" data-a="${s}" size="${Math.max(5,s.split("|")[0].length+2)}" autocapitalize="off" autocomplete="off" spellcheck="false" aria-label="空所">`:esc(s)).join("");
+   const chk=c.querySelector(".chk");chk.classList.remove("hide");
+   const go=()=>{if(done)return;done=true;let all=true;
+    se.querySelectorAll("input").forEach(x=>{const ok=x.dataset.a.split("|").some(a=>norm(a)===norm(x.value));x.classList.add(ok?"ok":"ng");x.readOnly=true;if(!ok)all=false});
+    chk.classList.add("hide");fin(c,d,all,`<mark>${esc(filled(d))}</mark>`);say(filled(d),.9)};
+   chk.onclick=go;se.querySelectorAll("input").forEach(x=>x.onkeydown=e=>{if(e.key==="Enter")go()});
+  }else{
+   const oc=c.querySelector(".opts");
+   shuffle(d.o.map((_,k)=>k)).forEach(k=>{
+    const b=document.createElement("button");b.className="opt";b.textContent=d.o[k];
+    b.onclick=()=>{if(done)return;done=true;const ok=k===d.a;
+     oc.querySelectorAll(".opt").forEach(x=>{x.disabled=true;if(x.textContent===d.o[d.a])x.classList.add("ok")});
+     if(!ok)b.classList.add("ng");
+     let html=d.long?"":esc(d.s);
+     d.v.forEach(([w])=>{const base=w.split(" - ")[0];html=html.replace(new RegExp("\\b"+base.replace(/[.*+?^${}()|[\]\\]/g,"\\$&"),"i"),m=>`<mark>${m}</mark>`)});
+     fin(c,d,ok,html)};
+    oc.appendChild(b);
+   });
+  }
+  list.appendChild(c);
+ });
+ upd();
+}
+function finish(){
+ speechSynthesis.cancel();
+ const r=$("result");r.classList.remove("hide");
+ $("rscore").textContent=`${score} / ${ITEMS.length}`;
+ $("rparts").innerHTML=Object.entries(tally).map(([p,t])=>`${p}：${t.c} / ${t.n}`).join("<br>");
+ $("wordgrid").innerHTML=chips(seen);bindChips($("wordgrid"));
+ r.scrollIntoView({behavior:"smooth",block:"start"});
+}
+$("again").onclick=()=>{$("result").classList.add("hide");build();$("list").scrollIntoView({behavior:"smooth"})};
+build();
+</script>
+</body>
+</html>
