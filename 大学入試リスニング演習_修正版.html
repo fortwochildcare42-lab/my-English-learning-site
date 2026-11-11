@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>大学入試リスニング演習（共通テスト形式）</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600;800&display=swap">
+<style>
+:root{--bg:#f4f6fa;--card:#fff;--ink:#0f172a;--sub:#566178;--line:#d5dbe7;--accent:#1e4fd6;--accent-ink:#fff;--ok-bg:#dff5ea;--ok:#12805c;--ng-bg:#fde4e4;--ng:#c43d3d;--mark:#ffe9a8;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1220;--card:#131c2e;--ink:#e8edf7;--sub:#9aa7bf;--line:#26324a;--accent:#7ea2ff;--accent-ink:#0b1220;--ok-bg:#0f3a2d;--ok:#4cc79a;--ng-bg:#43212a;--ng:#ff8a8a;--mark:#5a4a12}}
+:root[data-theme="dark"]{--bg:#0b1220;--card:#131c2e;--ink:#e8edf7;--sub:#9aa7bf;--line:#26324a;--accent:#7ea2ff;--accent-ink:#0b1220;--ok-bg:#0f3a2d;--ok:#4cc79a;--ng-bg:#43212a;--ng:#ff8a8a;--mark:#5a4a12}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;line-height:1.75;font-size:16px}
+main{max-width:780px;margin:0 auto;padding:28px 18px 70px}
+h1,h2,h3{font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;margin:0}
+h1{font-size:clamp(30px,6vw,46px);font-weight:800;line-height:1.2;letter-spacing:.01em}
+h1 small{display:block;font-family:"Noto Sans JP",sans-serif;font-size:15px;font-weight:500;color:var(--sub);margin-top:10px;letter-spacing:0}
+h2{font-size:22px;font-weight:800;margin:44px 0 6px}
+.gl{color:var(--sub);margin:0 0 14px;font-size:15px}
+.cards{display:grid;gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.card h3{font-size:18px;font-weight:800}
+.card .ja{margin:2px 0 8px;color:var(--sub);font-size:15px}
+.ex{display:flex;gap:10px;align-items:center;margin:6px 0;font-size:17px}
+.ex button{flex:none}
+.form{margin:10px 0 0;padding:8px 12px;border-left:3px solid var(--accent);background:var(--bg);font-size:14px}
+button,select,input{font:inherit;color:inherit}
+.btn{border:0;background:var(--accent);color:var(--accent-ink);border-radius:8px;padding:10px 18px;font-weight:700;cursor:pointer;min-height:44px}
+.btn.ghost{background:transparent;border:1.5px solid var(--accent);color:var(--accent)}
+.btn.small{padding:4px 12px;min-height:34px;font-size:14px}
+.btn:focus-visible,.opt:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.voice{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--card);font-size:14px}
+.voice .st{flex:1 1 220px;font-weight:700}
+.st.ok{color:var(--ok)}.st.ng{color:var(--ng)}
+select{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 8px;max-width:100%}
+.prog{height:6px;background:var(--line);border-radius:99px;overflow:hidden;margin:10px 0 14px}
+.prog i{display:block;height:100%;width:0;background:var(--accent);transition:width .4s}
+.qhead{display:flex;justify-content:space-between;gap:8px;font-size:14px;color:var(--sub);font-weight:700}
+.play{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 14px}
+.q{font-size:18px;font-weight:700;margin:6px 0 12px}
+.opts{display:grid;gap:10px}
+.opt{text-align:left;background:var(--bg);border:1.5px solid var(--line);border-radius:8px;padding:12px 16px;cursor:pointer;font-weight:500;min-height:48px}
+.opt.ok{background:var(--ok-bg);border-color:var(--ok)}.opt.ng{background:var(--ng-bg);border-color:var(--ng)}
+.opt:disabled{cursor:default}
+.sent{font-size:19px;line-height:2.3}
+.sent input{width:7.5em;border:0;border-bottom:2px solid var(--accent);background:transparent;text-align:center;padding:2px 4px;font-size:19px;border-radius:0}
+.sent input.ok{border-color:var(--ok);color:var(--ok)}.sent input.ng{border-color:var(--ng);color:var(--ng)}
+.fb{margin-top:16px;padding:14px 16px;border-radius:8px;background:var(--bg);border:1px solid var(--line)}
+.fb .script{font-size:17px;margin:6px 0 8px}
+mark{background:var(--mark);color:inherit;border-radius:4px;padding:0 3px}
+.words{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.chip{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:3px 12px;font-size:14px;cursor:pointer}
+.score{font-family:"Noto Serif JP",serif;font-size:56px;font-weight:800;margin:0}
+.hide{display:none}
+.wordgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px;text-align:left}
+@media (prefers-reduced-motion:reduce){.prog i{transition:none}}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+.stick{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;display:flex;align-items:center;gap:12px;background:var(--bg);padding:10px 0;margin-top:14px;font-size:14px;font-weight:700;color:var(--sub);border-bottom:1px solid var(--line)}
+.stick .prog{flex:1;margin:0}
+.ph{font-size:20px;font-weight:800;margin:34px 0 12px}
+.ph small{display:block;font-family:"Noto Sans JP",sans-serif;font-size:14px;font-weight:500;color:var(--sub);margin-top:2px}
+.qc{margin-bottom:14px}
+.qn{font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.08em}
+.pas{margin-bottom:14px;font-size:16px;line-height:1.9}.pas p{margin:0 0 10px}
+#list{margin-top:6px}
+.pts{margin:6px 0 10px;padding-left:1.3em}.pts li{margin:4px 0;font-size:15px}
+.lab{font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.08em;margin-top:6px}
+.sub{color:var(--sub);font-size:14px}
+.cau{margin:8px 0 0;padding:8px 12px;border-left:3px solid var(--ng);background:var(--bg);font-size:14px}
+table.cmp{border-collapse:collapse;width:100%;min-width:560px;font-size:14px}.cmp th,.cmp td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}.cmp th{background:var(--bg)}
+
+
+.opt{line-height:1.6}
+.scr{margin-top:8px;font-size:15px;line-height:1.9}.scr p{margin:0 0 6px}.scr b{color:var(--accent)}
+details summary{cursor:pointer;font-weight:700;color:var(--accent)}
+.mode{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:14px;margin-top:10px}
+textarea{width:100%;margin-top:10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);padding:8px 10px;font:inherit;font-size:14px;resize:vertical}
+.ws{overflow-x:auto;margin-top:12px}
+.opts.charts{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.opt svg{display:block;width:100%;height:auto}
+.fmt li{margin:3px 0;font-size:15px}
+</style>
+</head>
+<body>
+<main>
+<h1>大学入試リスニング演習<small>共通テスト形式 ／ 高校1年生向け ／ 全15問</small></h1>
+
+<div class="card" style="margin-top:16px">
+ <h3 style="font-size:17px">共通テスト（英語リスニング）の形式メモ</h3>
+ <ul class="fmt">
+  <li>大問は6題。第1・2問は音声が2回、<b>第3〜6問は1回だけ</b>流れる。</li>
+  <li>後半では、講義＋ワークシート、グラフの読み取り、3人の議論での立場の整理など、聞きながら情報を処理する問題が出る。</li>
+  <li>アメリカ英語以外（イギリス英語など）の読み上げも含まれる。</li>
+  <li>この教材は、その形式に合わせて作ったオリジナル問題です（過去問そのものではありません）。</li>
+ </ul>
+</div>
+
+<div class="voice" style="margin-top:14px">
+ <span class="st" id="vstat">音声を確認中…</span>
+ <select id="vsel" aria-label="声の選択"></select>
+ <button class="btn small ghost" id="vtest">テスト再生</button>
+</div>
+<label class="mode">再生回数：
+ <select id="pm" aria-label="再生回数">
+  <option value="pr">練習（各音声2回まで）</option>
+  <option value="bon">本番（問題1は2回、問題2・3は1回）</option>
+  <option value="un">無制限</option>
+ </select></label>
+
+<div class="stick"><span id="qnum"></span><div class="prog"><i id="bar"></i></div><span id="qscore"></span></div>
+<div id="list"></div>
+
+<section id="result" class="card hide" style="text-align:center;margin-top:24px">
+ <p class="score" id="rscore"></p>
+ <p id="rparts"></p>
+ <button class="btn" id="again">もう一度</button>
+</section>
+</main>
+
+<script>
+const NM={W:"Woman",M:"Man",X:"Woman 2",N:""};
+const LEC=[["N","Hello, everyone. In today's class, I'd like to compare reading on paper with reading on screens. Many students now use tablets for school, so this is an important topic."],["N","Let's start with paper. When you read a paper book, you can feel how far you have read by the thickness of the pages in each hand. Because of this, many readers can remember the location of a certain piece of information in the book. Also, paper does not send notifications, so it is easier to concentrate."],["N","Now, let's look at screens. The biggest advantage is search. If you want to find one word in a long text, a tablet can do it in a second. You can also change the size of the letters, which is helpful for people who have difficulty reading small print. On the other hand, notifications and other apps can interrupt you."],["N","Here is the result of a school survey. We asked students which they preferred, paper or screens, for three purposes: reading a novel, studying for a test, and looking up information. For novels, most students chose paper. For studying, the answers were almost equally divided. For looking up information, almost everyone chose screens."],["N","So which is better? I'd say it depends on the purpose. Use paper when you need to concentrate deeply, and use a screen when you need to find information quickly. The best readers choose the right tool for each task."]];
+const DIS=[["W","Our student council has to decide whether to allow smartphones during lunch break. I'm for it. What do you think?"],["M","Really? I'm against it. I think students would stop talking to each other."],["W","But there are good points. I often need to contact my mother after school, and some people use dictionary apps to study during lunch."],["M","I understand, but you can already use your phone in the hallway in an emergency. Last year, a school in our city allowed phones in the cafeteria. After a month, a teacher said the room was almost silent."],["X","Hmm, I'm not sure. I see both sides. Anna's point about contacting family is important. Some students have part-time jobs and need to check their schedules."],["M","Then they can use the hallway, like I said."],["X","But the hallway is crowded at lunch. What if we make two kinds of tables, one for phone users and one phone-free? People who want to talk can sit at the phone-free tables."],["W","That's a nice compromise. I'd support that."],["M","Hmm. It's better than allowing phones everywhere, but I'm still worried that some students will stay at the phone tables all the time."],["X","Then let's try it for one month and ask students how they feel."],["M","If we collect the opinions honestly, I could agree to a trial."],["W","Great. Shall we write a proposal for tomorrow's meeting?"]];
+const S=[
+{t:"問題1　短い対話（4問）",h:"【第3問タイプ】場面と質問・選択肢を先に読み、誰が何をするかを予想してから聞こう。",bon:2,b:[
+ {sc:"カフェで、女性が席を探しています。",l:[["W","Excuse me. Is anyone sitting here?"],["M","Well, my friend is just getting some coffee, but she'll be back soon. There are some empty seats by the window, though."],["W","Thanks. I need a quiet place to study, so I'll go over there."]],
+  qs:[{q:"Where will the woman most likely sit?",o:["Next to the man","In the seat where the man's friend is sitting","By the window","Near the coffee counter"],a:2,e:"席の主は戻ってくる予定。男性が勧めた by the window に、woman が I'll go over there と答えています。there が指す場所を押さえるのがポイントです。"}]},
+ {sc:"学校で、二人が理科のレポートについて話しています。",l:[["M","Have you finished the science report?"],["W","Not yet. I still have to make a graph. I thought the deadline was tomorrow, so I'm in a hurry."],["M","Didn't you hear? Mr. Ito changed it to Friday because many students asked for more time."],["W","Oh, great! That's a relief."]],
+  qs:[{q:"When is the deadline now?",o:["Tomorrow","Friday","Thursday","Next week"],a:1,e:"tomorrow は女性の思い違い。「変更された」という情報（changed it to Friday）が最後に出てくる、典型的な引っかけです。"}]},
+ {sc:"店で、女性が男性の店員にジャケットの返品を相談しています。",l:[["W","I'd like to return this jacket. It's too small."],["M","Do you have the receipt?"],["W","I'm afraid I lost it. But I paid by credit card."],["M","Then I can look up the record. Without a receipt, though, we can only give you store credit, not cash."],["W","That's fine. I'll find something else."]],
+  qs:[{q:"What will the woman most likely do?",o:["Get her money back in cash","Look for her receipt at home","Keep the jacket","Get store credit and choose another item"],a:3,e:"not cash が聞き取りのカギ。女性は That's fine（それでいい）と受け入れ、I'll find something else と言っています。"}]},
+ {sc:"駅へ行く前に、二人が家を出る時刻を相談しています。",l:[["W","Our train leaves at 6:40, so what time should we leave home?"],["M","It takes 25 minutes to walk to the station, so let's leave at 6:00."],["W","Wait. We also need to buy tickets, and the line is usually long. Let's leave 15 minutes earlier than that."],["M","Good idea."]],
+  qs:[{q:"What time will they leave home?",o:["5:45","5:40","6:00","6:15"],a:0,e:"最初の案は6:00。そこから15分早めるので5:45。数字を聞き取って計算する問題です。メモを取りながら聞きましょう。"}]}
+]},
+{t:"問題2　講義とワークシート・グラフ（6問）",h:"【第5問タイプ】長い講義です。先にワークシートとグラフの選択肢を見て、メモを取りながら聞こう。",bon:1,b:[
+ {memo:1,l:LEC,ws:`<table class="cmp"><tr><th></th><th>Good points</th><th>Weak points</th></tr><tr><td>Paper</td><td>Easier to remember the ( 1 ) of information<br>Few interruptions</td><td>—</td></tr><tr><td>Screen</td><td>Quick ( 2 ) of a word<br>Letter ( 3 ) can be changed</td><td>( 4 ) from notifications and other apps</td></tr></table>`,
+  qs:[
+   {q:"Choose the best answer for ( 1 ) in the worksheet.",o:["source","location","amount","price"],a:1,e:"remember the location of a certain piece of information。「どこに書いてあったか」を覚えやすいのが紙の利点です。source（出典）と混同しないように。"},
+   {q:"Choose the best answer for ( 2 ) in the worksheet.",o:["spelling","reading aloud","search","memory"],a:2,e:"The biggest advantage is search. 画面の最大の利点は検索です。「一番の利点」のように強調される部分は答えになりやすい。"},
+   {q:"Choose the best answer for ( 3 ) in the worksheet.",o:["size","number","shape","language"],a:0,e:"change the size of the letters。letters を words に言い換えて表にしてあります。講義の表現と表の表現の言い換えに慣れましょう。"},
+   {q:"Choose the best answer for ( 4 ) in the worksheet.",o:["Costs","Damage","Noise","Interruptions"],a:3,e:"notifications and other apps can interrupt you。動詞 interrupt が名詞 Interruptions に変わっています。品詞の言い換えです。"},
+   {q:"Which graph shows the results of the survey? (Paper vs. Screen, in %)",o:[[[20,80],[52,48],[90,10]],[[52,48],[80,20],[10,90]],[[80,20],[52,48],[10,90]],[[80,20],[10,90],[52,48]]],a:2,e:"小説 → 紙が多数、勉強 → ほぼ半々、調べもの → ほぼ全員が画面。この3つが同時に合うのは C だけです。聞く前に「3つの項目の並び」と「紙と画面の向き」の違いをチェックしておくのがコツです。"},
+   {q:"What is the speaker's conclusion?",o:["Students should avoid tablets.","The better one depends on the purpose.","Paper is always better.","Screens are always better."],a:1,e:"So which is better? I'd say it depends on the purpose. 疑問文のあとに結論が来る形です。always は極端な表現で、ほとんどの場合誤りです。"}
+  ]}
+]},
+{t:"問題3　3人の議論（5問）",h:"【第6問タイプ】3人の生徒が議論します。誰がどの立場かを ○（賛成）・×（反対）・△（迷い）でメモしながら聞こう。",bon:1,b:[
+ {memo:1,nm:{W:"Anna",M:"Ben",X:"Cathy"},l:DIS,
+  qs:[
+   {q:"What was each person's opinion at the beginning of the discussion?",o:["Anna: for / Ben: against / Cathy: for","Anna: for / Ben: against / Cathy: undecided","Anna: against / Ben: against / Cathy: undecided","Anna: undecided / Ben: for / Cathy: for"],a:1,e:"Anna は I'm for it、Ben は I'm against it、Cathy は I'm not sure。議論の「最初」の立場を問われている点に注意。途中や最後の意見とは別です。"},
+   {q:"Why is Ben against allowing smartphones?",o:["Phones are too expensive for students.","Teachers do not like phones.","Students may use phones only for games.","Students might stop talking to each other, as happened at another school."],a:3,e:"students would stop talking to each other と、市内の別の学校の例（the room was almost silent）が根拠です。"},
+   {q:"What did Cathy suggest?",o:["Banning phones completely","Allowing phones only in the hallway","Having both phone tables and phone-free tables","Allowing phones all day"],a:2,e:"two kinds of tables, one for phone users and one phone-free。hallway は Ben の案なので混同しないように。誰の発言かが大切です。"},
+   {q:"At the end, how does Ben feel about the plan?",o:["He is strongly against it.","He could accept a one-month trial.","He fully supports it.","He wants the teachers to decide."],a:1,e:"If we collect the opinions honestly, I could agree to a trial。完全な賛成ではなく、条件つきの受け入れです。最後に意見が変わる（弱まる）パターンは第6問でよく出ます。"},
+   {q:"Which fact would best support Ben's concern?",o:["Most students at the phone tables did not talk to anyone during lunch.","Many students said phones helped them contact their families.","The phone-free tables were popular with students.","The cafeteria was cleaned more often."],a:0,e:"Ben の心配は「phone tables に居続けて会話が減る」こと。それを裏づけるのは A です。B は Anna の主張、C は Cathy の案を支える事実です。"}
+  ]}
+]}
+];
+const $=id=>document.getElementById(id);
+let voices=[],voice=null,voice2=null,fem=false,score=0,answered=0,total=0,tally={};
+const FEM=/samantha|karen|moira|tessa|victoria|fiona|serena|kate|allison|ava|susan|zira|aria|jenny|hazel|libby|sonia|michelle|natasha|clara|catherine|nicky|joanna|salli|kendra|emma|amy|olivia|female|google us english|google uk english female/i;
+const NOTMALE=v=>!/\bmale\b/i.test(v.name.replace(/female/ig,""));
+function pick(){voice=voices[+$("vsel").value]||null;voice2=voices.find(v=>v!==voice&&/^en/i.test(v.lang)&&v.name.split(" ")[0]!==(voice&&voice.name.split(" ")[0]))||voice}
+function loadVoices(){
+ const all=speechSynthesis.getVoices().filter(v=>/^en/i.test(v.lang));
+ voices=all.filter(v=>FEM.test(v.name)&&NOTMALE(v));fem=voices.length>0;
+ const sel=$("vsel"),keep=sel.value,st=$("vstat");
+ sel.innerHTML=voices.map((v,k)=>`<option value="${k}">${v.name} (${v.lang})</option>`).join("");
+ if(!fem){voices=all;voice=voice2=all[0]||null;st.className="st ng";st.textContent="この端末では女性の声を確認できません。iPad・Mac・Windows（Edge/Chrome）での使用をおすすめします。";sel.classList.add("hide");return}
+ sel.classList.remove("hide");
+ const pref=voices.findIndex(v=>/en-US/i.test(v.lang)&&/samantha|aria|jenny|ava|allison|zira|michelle/i.test(v.name));
+ sel.value=keep||String(pref>=0?pref:0);pick();
+ st.className="st ok";st.textContent="女性の声を確認しました："+voice.name+"（男性役も女性の声で、高さを変えて再生します）";
+}
+if("speechSynthesis" in window){loadVoices();speechSynthesis.onvoiceschanged=loadVoices}else $("vstat").textContent="このブラウザは音声再生に対応していません。";
+$("vsel").onchange=()=>{pick();speak([["W","Hello. This is a test of the voice."],["M","And this is the second speaker."],["X","And this is the third."]],.9)};
+$("vtest").onclick=()=>speak([["W","Excuse me. Is anyone sitting here?"],["M","No, please go ahead."]],.9);
+const PT={W:1.05,M:.8,X:1.25,N:1},PN={W:1.3,M:.9,X:1.4,N:1.2};
+let spkTok=0,spkWd=null;const keepU=[];
+function stopSpeech(){spkTok++;clearTimeout(spkWd);keepU.length=0;try{speechSynthesis.cancel()}catch(e){}}
+function speak(lines,rate){
+ if(!("speechSynthesis" in window))return;
+ stopSpeech();
+ const tok=spkTok,q=[];
+ lines.forEach(([sp,tx])=>tx.split(/(?<=[.!?])\s+/).forEach(p=>q.push([sp,p])));
+ function next(i,retry){
+  if(tok!==spkTok||i>=q.length)return;
+  const sp=q[i][0],p=q[i][1];
+  const u=new SpeechSynthesisUtterance(p),v=sp==="M"?voice2:voice;
+  if(v){u.voice=v;u.lang=v.lang}else u.lang="en-US";
+  u.rate=rate;u.pitch=(fem?PT:PN)[sp];
+  let started=false,done=false;
+  keepU.length=0;keepU.push(u);
+  const adv=()=>{if(done)return;done=true;clearTimeout(spkWd);if(tok===spkTok)setTimeout(()=>next(i+1,0),40)};
+  const reset=()=>{
+   if(done||tok!==spkTok)return;
+   done=true;
+   try{speechSynthesis.cancel()}catch(e){}
+   setTimeout(()=>{if(tok!==spkTok)return;retry<2?next(i,retry+1):next(i+1,0)},300);
+  };
+  u.onstart=()=>{started=true;clearTimeout(spkWd);spkWd=setTimeout(reset,4000+p.length*250)};
+  u.onend=adv;u.onerror=adv;
+  try{speechSynthesis.resume()}catch(e){}
+  speechSynthesis.speak(u);
+  spkWd=setTimeout(()=>{if(!started)reset()},2000);
+ }
+ setTimeout(()=>{if(tok===spkTok)next(0,0)},250);
+}
+const esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+function chart(d){
+ const lab=["Novel","Studying","Information"];let s=`<svg viewBox="0 0 220 104" role="img" aria-label="bar chart"><g font-size="10" fill="currentColor">`;
+ d.forEach((r,i)=>{const y=4+i*26;s+=`<text x="0" y="${y+12}">${lab[i]}</text><rect x="60" y="${y}" width="${r[0]*1.5}" height="18" fill="var(--accent)"/><rect x="${60+r[0]*1.5}" y="${y}" width="${r[1]*1.5}" height="18" fill="var(--sub)" opacity=".5"/><text x="63" y="${y+13}" fill="var(--accent-ink)">${r[0]}</text><text x="${57+(r[0]+r[1])*1.5}" y="${y+13}" text-anchor="end">${r[1]}</text>`});
+ return s+`<rect x="60" y="88" width="9" height="9" fill="var(--accent)"/><text x="73" y="96">Paper</text><rect x="116" y="88" width="9" height="9" fill="var(--sub)" opacity=".5"/><text x="129" y="96">Screen</text></g></svg>`;
+}
+function upd(){$("qnum").textContent=`${answered} / ${total} 問`;$("qscore").textContent=`正解 ${score}`;$("bar").style.width=(answered/total*100)+"%"}
+const lim=sec=>{const m=$("pm").value;return m==="un"?99:m==="pr"?2:(sec.bon||2)};
+function build(){
+ const L=$("list");L.innerHTML="";score=0;answered=0;tally={};
+ total=S.reduce((a,s)=>a+s.b.reduce((x,b)=>x+b.qs.length,0),0);
+ S.forEach(sec=>{
+  const h=document.createElement("h3");h.className="ph";h.innerHTML=`${sec.t}<small>${sec.h}</small>`;L.appendChild(h);
+  sec.b.forEach(b=>{
+   let plays=0;const nm={...NM,...(b.nm||{})};
+   const c=document.createElement("div");c.className="card pas";
+   c.innerHTML=(b.sc?`<p class="sub" style="margin:0 0 8px"><b>場面：</b>${b.sc}</p>`:"")+`<div class="play" style="margin:0"><button class="btn">▶ 再生</button><button class="btn ghost">■ 停止</button><span class="sub"></span></div>`+(b.ws?`<div class="ws">${b.ws}</div>`:"")+(b.memo?`<textarea rows="3" placeholder="メモ欄（数字・キーワード・○×△など）" aria-label="メモ欄"></textarea>`:"")+`<details style="margin-top:10px"><summary>スクリプトを見る（答えてから開こう）</summary><div class="scr">${b.l.map(([s,t])=>`<p>${nm[s]?`<b>${nm[s]}:</b> `:""}${esc(t)}</p>`).join("")}</div></details>`;
+   const [pb,sb]=c.querySelectorAll("button"),lab=c.querySelector(".play .sub");
+   const lbl=()=>{const n=lim(sec);lab.textContent=n>=99?"何回でも再生できます":`残り ${Math.max(0,n-plays)} 回`;pb.disabled=plays>=n};
+   pb.onclick=()=>{plays++;lbl();speak(b.l,.88)};sb.onclick=stopSpeech;
+   $("pm").addEventListener("change",lbl);lbl();
+   L.appendChild(c);
+   b.qs.forEach(q=>{
+    const d=document.createElement("article");d.className="card qc";
+    d.innerHTML=`<p class="q"></p><div class="opts"></div><div class="fb hide"><div class="fh" style="font-weight:700"></div><div class="ex2"></div></div>`;
+    d.querySelector(".q").textContent=q.q;
+    let done=false;const oc=d.querySelector(".opts");
+    if(Array.isArray(q.o[0]))oc.classList.add("charts");
+    q.o.forEach((o,k)=>{
+     const x=document.createElement("button");x.className="opt";
+     if(Array.isArray(o))x.innerHTML=`<b>${"ABCD"[k]}</b>`+chart(o);else x.textContent=`${"ABCD"[k]}.  ${o}`;
+     x.onclick=()=>{if(done)return;done=true;const ok=k===q.a;
+      oc.querySelectorAll(".opt").forEach((y,j)=>{y.disabled=true;if(j===q.a)y.classList.add("ok")});
+      if(!ok)x.classList.add("ng");
+      if(ok)score++;answered++;
+      const t=tally[sec.t]||(tally[sec.t]={c:0,n:0});t.n++;if(ok)t.c++;
+      const fh=d.querySelector(".fh");fh.textContent=ok?"正解":"不正解 — 解説を確認しよう";fh.style.color=ok?"var(--ok)":"var(--ng)";
+      d.querySelector(".ex2").textContent=q.e;d.querySelector(".fb").classList.remove("hide");
+      upd();if(answered===total)finish()};
+     oc.appendChild(x);
+    });
+    L.appendChild(d);
+   });
+  });
+ });
+ upd();
+}
+function finish(){
+ stopSpeech();
+ const r=$("result");r.classList.remove("hide");
+ $("rscore").textContent=`${score} / ${total}`;
+ $("rparts").innerHTML=Object.entries(tally).map(([p,t])=>`${p}：${t.c} / ${t.n}`).join("<br>");
+ r.scrollIntoView({behavior:"smooth",block:"start"});
+}
+$("again").onclick=()=>{stopSpeech();$("result").classList.add("hide");build();window.scrollTo({top:0,behavior:"smooth"})};
+build();
+</script>
+</body>
+</html>
